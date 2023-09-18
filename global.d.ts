@@ -18,3 +18,6 @@ declare module "*.svg" {
 
   export default ReactComponent;
 }
+
+declare module '*.woff';
+declare module '*.woff2';

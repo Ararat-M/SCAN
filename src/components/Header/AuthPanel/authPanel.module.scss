@@ -5,6 +5,7 @@
 }
 
 .item:not(:last-child) {
+  color: var(--primary-black);
   padding-right: 18px;
   border-right: solid 2px #029491;
 }

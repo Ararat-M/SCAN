@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import { classNames } from "shared/classNames/classNames";
+import { classNames } from "shared/lib/classNames";
 import classes from "./button.module.scss";
 
 interface ButtonProps {
@@ -9,6 +9,7 @@ interface ButtonProps {
 
 export enum ButtonTheme {
   PRIMARY = "primary",
+  SECONDARY = "secondary",
   DEACTIVATED = "deactivated"
 }
 

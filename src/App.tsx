@@ -6,16 +6,18 @@ import { Routes, Route } from "react-router";
 
 export function App() {
   return (
-    <>
+    <div className="layout">
       <Header />
 
-      <Suspense fallback={""}>
-        <Routes>
-            <Route path="/" element={<Main/>}/>
-        </Routes>
-      </Suspense>
+        <div className="content">
+        <Suspense fallback={""}>
+          <Routes>
+              <Route path="/" element={<Main/>}/>
+          </Routes>
+        </Suspense>
+        </div>
       
       <Footer />
-    </>
+    </div>
   );
 }

@@ -1,0 +1,24 @@
+.footer {
+  background-color: var(--primary-color);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  color: var(--primary-white);
+
+  a {
+    align-self: flex-end;
+  }
+}
+
+.copyright {
+  margin-top: 21px;
+  align-self: flex-end;
+}

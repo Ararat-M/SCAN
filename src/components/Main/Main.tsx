@@ -1,15 +1,19 @@
+import classes from "./main.module.scss"
+import { Hero } from "./Hero";
+import { classNames } from "shared/lib/classNames";
+
 export function Main() {
   return (
-    <main className="container">
-      <section>  
-        {/* <Hero /> */}
+    <main>
+      <section className={classNames(classes.hero, ["container"])}>  
+        <Hero />
       </section>
 
-      <section>  
+      <section className={classNames(classes.advantage, ["container"])}>  
         {/* <Advantage /> */}
       </section>
 
-      <section>  
+      <section className={classNames(classes.tariff, ["container"])}>  
         {/* <Tariff /> */}
       </section>
     </main>

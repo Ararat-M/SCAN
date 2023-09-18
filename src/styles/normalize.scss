@@ -7,7 +7,8 @@
 input,
 button,
 textarea,
-select {
+select,
+a {
   margin: 0;
   font: inherit;
 }
@@ -21,4 +22,9 @@ button {
 
 ul {
   list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

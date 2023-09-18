@@ -1,12 +1,18 @@
 import classes from "./hero.module.scss";
+import heroImage from "shared/assets/images/hero-image.jpg";
+import { Button, ButtonTheme } from "shared/ui/Button";
 
 export function Hero() {
   return (
-    <div>
-      <h1></h1>
-      <p></p>
-      {/* <Button /> */}
-      <img src="" alt="" />
+    <div className={classes.hero}>
+      <div>
+        <h1 className={classes.title}>сервис по поиску<br/>публикаций<br/>о компании<br/>по его ИНН</h1>
+        <p className={classes.text}>Комплексный анализ публикаций, получение данных в формате PDF на электронную почту.</p>
+        <Button theme={ButtonTheme.SECONDARY}>Запросить данные</Button>
+      </div>
+      <div className={classes.img}>
+        <img src={heroImage} alt="heroImage" />
+      </div>
     </div>
   );
 }

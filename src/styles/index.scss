@@ -1,7 +1,40 @@
+@import "./variables.scss";
 @import "./normalize.scss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@font-face {
+  font-family: "ferry";
+  src: url("fonts/Ferry.woff") format("woff");
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  font-weight: 400px;
+}
+
+#root {
+  display: flex;
+  height: 100%;
+}
+
+.layout {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1 0 auto;
+}
 
 .container {
   max-width: 1440px;
-  margin: 0 auto;
   padding: 0 60px;
+  margin: 0 auto
 }

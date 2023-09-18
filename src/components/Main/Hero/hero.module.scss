@@ -1,0 +1,24 @@
+.hero {
+  position: relative;
+  display: flex;
+  padding-bottom: 90px;
+}
+
+.title {
+  font-family: var(--font-main);
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.text {
+  max-width: 535px;
+  font-size: 20px;
+  margin-bottom: 70px;
+}
+
+.img {
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  top: -27px;
+}
