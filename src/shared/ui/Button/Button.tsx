@@ -1,8 +1,8 @@
-import { type ReactNode } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { classNames } from "shared/lib/classNames";
 import classes from "./button.module.scss";
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
   theme: ButtonTheme;
 }
@@ -10,12 +10,13 @@ interface ButtonProps {
 export enum ButtonTheme {
   PRIMARY = "primary",
   SECONDARY = "secondary",
-  DEACTIVATED = "deactivated"
+  DEACTIVATED = "deactivated",
+  CLEAR = "clear"
 }
 
-export function Button({ children, theme }: ButtonProps) {
+export function Button({ children, theme, ...props }: ButtonProps) {
   return (
-    <button className={classNames(classes[theme])}>
+    <button {...props} className={classNames(classes[theme])}>
       {children}
     </button>
   );

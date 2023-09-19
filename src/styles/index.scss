@@ -1,5 +1,6 @@
 @import "./variables.scss";
 @import "./normalize.scss";
+@import "react-alice-carousel/lib/scss/alice-carousel.scss";
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @font-face {
@@ -37,4 +38,12 @@ body {
   max-width: 1440px;
   padding: 0 60px;
   margin: 0 auto
+}
+
+.alice-carousel {
+  max-width: 1260px;
+}
+
+.alice-carousel__stage {
+  margin: 20px 10px;
 }

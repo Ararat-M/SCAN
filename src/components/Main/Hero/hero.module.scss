@@ -1,5 +1,4 @@
 .hero {
-  position: relative;
   display: flex;
   padding-bottom: 90px;
 }
@@ -14,11 +13,4 @@
   max-width: 535px;
   font-size: 20px;
   margin-bottom: 70px;
-}
-
-.img {
-  position: absolute;
-  z-index: -1;
-  right: 0;
-  top: -27px;
 }

@@ -1,6 +1,7 @@
 import classes from "./main.module.scss"
 import { Hero } from "./Hero";
 import { classNames } from "shared/lib/classNames";
+import { Advantage } from "./Advantage";
 
 export function Main() {
   return (
@@ -10,7 +11,7 @@ export function Main() {
       </section>
 
       <section className={classNames(classes.advantage, ["container"])}>  
-        {/* <Advantage /> */}
+        <Advantage />
       </section>
 
       <section className={classNames(classes.tariff, ["container"])}>  
