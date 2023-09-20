@@ -1,6 +1,8 @@
 .hero {
   display: flex;
   padding-bottom: 90px;
+  background-repeat: no-repeat;
+  background-position: 100% -27px;
 }
 
 .title {
@@ -13,4 +15,31 @@
   max-width: 535px;
   font-size: 20px;
   margin-bottom: 70px;
+}
+
+.hero-btn {
+  padding: 14px 64px 18px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 1439px) {
+  .hero {
+    background-position: 0 100%;
+    background-size: 347px 327px;
+    padding-bottom: 366px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .text {
+    font-size: 18px;
+    margin-bottom: 32px;
+  }
+
+  .hero-btn {
+    width: 100%;
+  }
 }

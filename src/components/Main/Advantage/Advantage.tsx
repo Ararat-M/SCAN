@@ -8,7 +8,7 @@ import { AdvantageCard } from "./AdvantageCard";
 import AliceCarousel from 'react-alice-carousel';
 import { Button, ButtonTheme } from "shared/ui/Button";
 import { useRef } from "react";
-import { AdvantageBG } from "shared/assets/svg/AdvantageBG";
+import AdvantageBG from "shared/assets/images/advantage-bg.jpg";
 
 const cardList = [
   <AdvantageCard 
@@ -29,7 +29,12 @@ export function Advantage() {
   const carouselRef = useRef<AliceCarousel>(null)
 
   return (
-    <div>
+    <div
+      className={classes.advantage}
+      style={{
+        backgroundImage: `url(${AdvantageBG})`
+      }}
+    >
       <h2 className={classes.title}>почему именно мы</h2>
       <div className={classes.carousel}>
         <Button theme={ButtonTheme.CLEAR} onClick={() => carouselRef.current?.slidePrev()}> 
@@ -45,6 +50,12 @@ export function Advantage() {
           items={cardList.map((card) => card)}
           responsive={{
             0: {
+              items: 1
+            },
+            920: {
+              items: 1
+            },
+            1440: {
               items: 3
             }
           }}
@@ -53,8 +64,14 @@ export function Advantage() {
         <Button theme={ButtonTheme.CLEAR} onClick={() => carouselRef.current?.slideNext()}>
           <img src={arrowRight} alt="right" />
         </Button>
+        {/* <div
+          style={{
+            position: "absolute"
+          }}
+        >
+          <AdvantageBG />
+        </div> */}
       </div>
-      <AdvantageBG />
     </div>
   );
 }

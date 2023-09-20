@@ -1,10 +1,11 @@
 import { TariffCardList, type TariffCard } from "./TariffCardList";
 import classes from "./tariff.module.scss";
-
+import { IconLamp, IconLaptop, IconTarger } from "shared/assets/svg";
 const cardList: TariffCard[] =  [
   {
     title: "Beginner",
     description: "Для небольшого исследования",
+    icon: <IconLamp />,
     price: "799",
     cardHeadBgColor: "#FFB64F",
     beforePrice: "1 200",
@@ -19,6 +20,7 @@ const cardList: TariffCard[] =  [
   {
     title: "Pro",
     description: "Для HR и фрилансеров",
+    icon: <IconTarger />,
     cardHeadBgColor: "var(--btn-primary-color)",
     price: "1 299",
     beforePrice: "2 600",
@@ -32,6 +34,7 @@ const cardList: TariffCard[] =  [
   {
     title: "Business",
     description: "Для корпоративных клиентов",
+    icon: <IconLaptop />,
     cardHeadColor: "var(--primary-white)",
     cardHeadBgColor: "var(--primary-black)",
     price: "2 379",

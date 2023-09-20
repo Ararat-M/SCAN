@@ -11,12 +11,18 @@ export enum ButtonTheme {
   PRIMARY = "primary",
   SECONDARY = "secondary",
   DEACTIVATED = "deactivated",
-  CLEAR = "clear"
+  CLEAR = "clear",
+  BASIC = "basic"
 }
 
-export function Button({ children, theme, ...props }: ButtonProps) {
+export function Button({ children, theme, className, ...props }: ButtonProps) {
+
+  const additionalCls = [
+    className || ""
+  ]
+
   return (
-    <button {...props} className={classNames(classes[theme])}>
+    <button {...props} className={classNames(classes[theme], [...additionalCls])}>
       {children}
     </button>
   );

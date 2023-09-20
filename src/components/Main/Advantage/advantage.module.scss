@@ -1,3 +1,9 @@
+.advantage {
+  padding-bottom: 645px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}
+
 .title {
   font-family: var(--font-main);
   font-size: 45px;
@@ -6,7 +12,26 @@
 
 .carousel {
   display: flex;
-  margin-bottom: 70px;
   align-items: center;
   transform: translateX(-9px);
+}
+
+@media screen and (max-width: 1439px) {
+  .advantage {
+    padding-bottom: 472px;
+    background-size: 891px 392px;
+  }
+
+  .title {
+    max-width: 280px;
+    font-size: 28px;
+    line-height: 33px;
+  }
+
+  .carousel {
+    width: 298px;
+    display: flex;
+    align-items: center;
+    transform: translateX(-9px);
+  }
 }

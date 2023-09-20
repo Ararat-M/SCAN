@@ -10,3 +10,20 @@
 .tariff {
   margin-bottom:  118px;
 }
+
+
+.hero {
+  margin-top: 69px;
+
+}
+
+@media screen and (max-width: 1439px) {
+  .hero {
+    margin-top: 20px;
+    margin-bottom: 55px;
+  }
+
+  .advantage {
+    margin-bottom:  80px;
+  }
+}

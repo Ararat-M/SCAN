@@ -9,7 +9,9 @@ export function Header() {
     <header>
       <div className={classNames(classes.content, ["container"])}>
         <img className={classes.logo} src={logo} alt="logo" />
-        <Navigation />
+        <div className={classes.nav}>
+          <Navigation />
+        </div>
         <div className={classes.panel}>
           <AuthPanel />
         </div>

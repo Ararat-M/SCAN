@@ -10,3 +10,14 @@
 .panel {
   margin-left: auto;
 }
+
+@media screen and (max-width: 1439px) {
+  .logo {
+    margin-right: 0px;
+  }
+
+  .panel,
+  .nav {
+    display: none;
+  }
+}

@@ -6,11 +6,8 @@
 }
 
 .secondary {
-  padding: 14px 64px 18px;
   color: var(--primary-white);
   background-color: var(--btn-secondary-color);
-  font-size: 22px;
-  font-weight: 500;
   border-radius: 5px;
 }
 
@@ -20,4 +17,11 @@
 
 .clear {
   padding: 0;
+}
+
+.basic {
+  color: var(--primary-black);
+  background-color: #D2D2D2;
+  font-weight: 500;
+  border-radius: 5px;
 }

@@ -1,13 +1,14 @@
 import { type ReactNode } from "react";
 import classes from "./tariffCardList.module.scss";
 import checkMark from "shared/assets/images/check-mark.jpg"
+import { Button, ButtonTheme } from "shared/ui/Button";
 
 export interface TariffCard {
   title: string;
   description: string;
   cardHeadColor?: string;
   cardHeadBgColor?: string;
-  img?: string | ReactNode;
+  icon?: ReactNode;
   price: string;
   beforePrice?: string;
   pricePerMonth?: string;
@@ -35,6 +36,9 @@ export function TariffCardList({ items }: TariffCardListProps) {
               <div className={classes["card-header-content"]}>
                 <h3 className={classes.title}>{item.title}</h3>
                 <span className={classes.description}>{item.description}</span>
+              </div>
+              <div className={classes["card-header-icon"]}>
+                {item.icon}
               </div>
             </div>
 
@@ -64,6 +68,22 @@ export function TariffCardList({ items }: TariffCardListProps) {
                 })}
               </ul>
             </div>
+            
+            {item.isActive 
+              ? (
+                <div className={classes["card-footer"]}>
+                  <Button theme={ButtonTheme.BASIC} className={classes["card-btn"]}>
+                    Перейти в личный кабинет
+                  </Button>
+                </div>
+              ) : (
+                <div className={classes["card-footer"]}>
+                    <Button theme={ButtonTheme.SECONDARY} className={classes["card-btn"]}>
+                      Подробнее
+                    </Button>
+                </div>
+              )
+            }
           </li>
         )
       })}
