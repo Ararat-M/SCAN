@@ -17,7 +17,7 @@
 
 .card-header,
 .price-info,
-.tarrif-info {
+.tariff-info {
   padding-left: 30px;
   padding-right: 10px;
 }
@@ -75,12 +75,12 @@
   }
 }
 
-.tarrif-info {
+.tariff-info {
   font-size: 20px;
   margin-bottom: 24px;
 }
 
-.tarrif-list {
+.tariff-list {
   display: flex;
   flex-direction: column;
   row-gap: 6px;
@@ -88,7 +88,7 @@
   font-size: 18px;
 }
 
-.tarrif-item {
+.tariff-item {
   display: flex;
   width: fit-content;
   column-gap: 5px;

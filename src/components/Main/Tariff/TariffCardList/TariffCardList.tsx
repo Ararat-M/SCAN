@@ -47,12 +47,12 @@ export function TariffCardList({ items }: TariffCardListProps) {
               {item.pricePerMonth && <span>или {item.pricePerMonth} ₽/мес. при рассрочке на 24 мес.</span>}
             </div>
 
-            <div className={classes["tarrif-info"]}>
+            <div className={classes["tariff-info"]}>
               В тариф входит:
-              <ul className={classes["tarrif-list"]}>
+              <ul className={classes["tariff-list"]}>
                 {item.list.map((item) => {
                   return (
-                    <li className={classes["tarrif-item"]}>
+                    <li className={classes["tariff-item"]}>
                       <div className={classes["item-check-mark"]}>
                         <img src={checkMark}/>
                       </div>
