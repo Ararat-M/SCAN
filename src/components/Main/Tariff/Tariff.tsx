@@ -7,7 +7,7 @@ const cardList: TariffCard[] =  [
     description: "Для небольшого исследования",
     icon: <IconLamp />,
     price: "799",
-    cardHeadBgColor: "#FFB64F",
+    cardHeadBgColor: "var(--secondary-orange)",
     beforePrice: "1 200",
     pricePerMonth: "150",
     list: [
@@ -21,7 +21,7 @@ const cardList: TariffCard[] =  [
     title: "Pro",
     description: "Для HR и фрилансеров",
     icon: <IconTarger />,
-    cardHeadBgColor: "var(--btn-primary-color)",
+    cardHeadBgColor: "var(--secondary-cyan)",
     price: "1 299",
     beforePrice: "2 600",
     pricePerMonth: "279",

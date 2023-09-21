@@ -6,7 +6,7 @@ export function Navigation() {
     <nav>
       <ul className={classes.navigation}>
         <li><Link to={"/"}>Главная</Link></li>
-        <li><Link to={"/"}> Тарифы</Link></li>
+        <li><Link to={"/"}>Тарифы</Link></li>
         <li><Link to={"/"}>FAQ</Link></li>
       </ul>
     </nav>

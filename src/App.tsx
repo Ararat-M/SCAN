@@ -1,3 +1,4 @@
+import { Auth } from "components/Auth";
 import { Footer } from "components/Footer";
 import { Header } from "components/Header";
 import { Main } from "components/Main";
@@ -13,6 +14,7 @@ export function App() {
         <Suspense fallback={""}>
           <Routes>
               <Route path="/" element={<Main/>}/>
+              <Route path="/auth" element={<Auth/>}/>
           </Routes>
         </Suspense>
         </div>

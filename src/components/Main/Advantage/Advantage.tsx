@@ -53,7 +53,7 @@ export function Advantage() {
               items: 1
             },
             920: {
-              items: 1
+              items: 2
             },
             1440: {
               items: 3
@@ -64,13 +64,6 @@ export function Advantage() {
         <Button theme={ButtonTheme.CLEAR} onClick={() => carouselRef.current?.slideNext()}>
           <img src={arrowRight} alt="right" />
         </Button>
-        {/* <div
-          style={{
-            position: "absolute"
-          }}
-        >
-          <AdvantageBG />
-        </div> */}
       </div>
     </div>
   );

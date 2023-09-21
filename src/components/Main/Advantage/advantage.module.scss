@@ -29,9 +29,6 @@
   }
 
   .carousel {
-    width: 298px;
-    display: flex;
-    align-items: center;
-    transform: translateX(-9px);
+    max-width: 295px;
   }
 }

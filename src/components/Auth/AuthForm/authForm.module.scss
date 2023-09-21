@@ -1,0 +1,58 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 16px;
+  color: #949494;
+
+  span {
+    display: block;
+    margin-bottom: 15px;
+  }
+}
+
+.label:not(:last-of-type) {
+  margin-bottom: 20px;
+}
+
+.label:last-of-type {
+  margin-bottom: 30px;
+}
+
+.submit-btn {
+  margin-bottom: 15px;
+  padding: 16px 0px;
+  font-size: 22px;
+  line-height: 26px;
+}
+
+.link {
+  margin-bottom: 30px;
+  text-decoration: underline;
+  align-self: center;
+  color: var(--secondary-blue);
+}
+
+.sso {
+  font-size: 16px;
+  color: #949494;
+}
+
+.sso-panel {
+  margin-top: 15px;
+  display: flex;
+  column-gap: 10px;
+}
+
+.sso-btn {
+  padding: 6px 18px;
+  border: 1px solid #5970FF82;
+  border-radius: 3px;
+}
+
+.sso-btn-icon {
+  width: 60px;
+  height: 20px;
+}

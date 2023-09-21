@@ -1,6 +1,8 @@
-export function IconTarger() {
+import { SVGProps } from "react";
+
+export function IconTarger({...props}: SVGProps<SVGSVGElement>) {
   return (
-      <svg style={{  transform: "rotate(-2deg)" }} width="transparent" height="transparent" viewBox="0 0 94 88" fill="none">
+      <svg style={{  transform: "rotate(-2deg)" }} {...props} width="transparent" height="transparent" viewBox="0 0 94 88" fill="none">
         <path d="M89.8614 55.6203C95.9375 35.6542 94.545 17.5132 86.7512 15.1013C78.9573 12.6894 67.7134 26.9199 61.6371 46.886C55.561 66.8521 56.9535 84.993 64.7474 87.405C72.5412 89.817 83.7851 75.5864 89.8614 55.6203Z" fill="#303646"/>
         <path d="M87.5398 54.9027C93.616 34.9366 92.6807 16.9371 85.4508 14.6998C78.2209 12.4624 67.4342 26.8344 61.358 46.8005C55.2818 66.7666 56.2171 84.766 63.447 87.003C70.6769 89.241 81.4636 74.8688 87.5398 54.9027Z" fill="white"/>
         <path d="M85.3572 54.2278C90.7276 36.581 89.9011 20.6725 83.5112 18.695C77.1213 16.7176 67.5877 29.4201 62.2174 47.067C56.847 64.7138 57.6734 80.622 64.0635 82.6C70.4534 84.577 79.9868 71.8747 85.3572 54.2278Z" fill="#CD2B31"/>

@@ -5,6 +5,7 @@ import classes from "./button.module.scss";
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
   theme: ButtonTheme;
+  isActive?: boolean;
 }
 
 export enum ButtonTheme {
@@ -15,14 +16,18 @@ export enum ButtonTheme {
   BASIC = "basic"
 }
 
-export function Button({ children, theme, className, ...props }: ButtonProps) {
+export function Button({ children, theme, className, isActive=false, ...props }: ButtonProps) {
 
   const additionalCls = [
     className || ""
   ]
 
+  const mods = {
+    "active": isActive
+  }
+
   return (
-    <button {...props} className={classNames(classes[theme], [...additionalCls])}>
+    <button {...props} className={classNames(classes[theme], [...additionalCls], mods)}>
       {children}
     </button>
   );
