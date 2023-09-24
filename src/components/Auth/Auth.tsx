@@ -38,7 +38,7 @@ export function Auth() {
             Зарегистрироваться
           </Button>
         </div>
-
+        
         <AuthForm/>
       </div>
     </div>

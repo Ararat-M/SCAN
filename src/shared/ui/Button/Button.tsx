@@ -23,7 +23,8 @@ export function Button({ children, theme, className, isActive=false, ...props }:
   ]
 
   const mods = {
-    "active": isActive
+    "active": isActive,
+    [classes.disabled]: props.disabled ?? false
   }
 
   return (
