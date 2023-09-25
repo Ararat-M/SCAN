@@ -4,7 +4,6 @@
 }
 
 .input {
-  margin-bottom: 4px;
   padding: 4px 17px;
   background-color: transparent;
   border: 1px solid #C7C7C7;
@@ -26,8 +25,7 @@
 .error-msg {
   display: block;
   position: absolute;
-  margin-right: auto;
-  margin-left: auto;
+  margin-top: 4px;
   left: 0;
   right: 0;
   text-align: center;

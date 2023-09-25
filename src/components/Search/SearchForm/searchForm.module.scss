@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
+  column-gap: 19px;
 }
 
 .input-field {
@@ -15,29 +16,33 @@
 }
 
 .input-date-field {
+  position: relative;
+  padding-bottom: 24px;
   display: flex;
   flex-direction: row;
   column-gap: 20px;
 }
 
 .checkbox-field {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  text-wrap: nowrap;
+  row-gap: 16px;
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 2;
 }
 
-.submit-btn {
+.input-submit-field {
+  position: relative;
   align-self: end;
   justify-self: end;
-  height: fit-content;
-  width: fit-content;
-  padding: 16px 117px;
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 3;
-  font-size: 22px;
 }
 
 .input {
@@ -63,4 +68,27 @@
 .input-date {
   width: 176px;
   height: 43px;
+}
+
+.input-date-error {
+  display: block;
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  color: rgb(255 89 89);
+}
+
+.submit-btn {
+  margin-bottom: 9px;
+  padding: 16px 117px;
+  font-size: 22px;
+}
+
+.form-info {
+  display: block;
+  position: absolute;
+  font-size: 14px;
+  color: #949494;
 }

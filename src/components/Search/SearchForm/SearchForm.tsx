@@ -1,30 +1,37 @@
 import { Input } from "shared/ui/Input";
 import classes from "./searchForm.module.scss";
 import { Button, ButtonTheme } from "shared/ui/Button";
-import { useState } from "react";
-import { useValueValidation } from "shared/hooks/useValueValidation";
 import { classNames } from "shared/lib/classNames";
-import { useDateValidation } from "shared/hooks/useDateValidation";
 import { useNavigate } from "react-router";
 import { Label } from "shared/ui/Lable";
 import { useInput } from "shared/hooks/useInput";
 import { useDateInput } from "shared/hooks/useDateInput";
+import { Checkbox } from "shared/ui/CheckBox/CheckBox";
+import { useState } from "react";
 
 export function SearchForm() {
   const navigate = useNavigate();
-
+  // inputs
   const [innInput] = useInput("", { required: true });
   const [quantityInput] = useInput("", { required: true, minValue: 1, maxValue: 1000 });
   const [tonalityInput] = useInput("any");
-
+  // date inputs
   const [startDateInput] = useDateInput("", { required: true });
   const [endDateInput] = useDateInput("", { required: true });
-  
+  // checkboxes
+  const [maxFullness, setMaxFullness] = useState(false);
+  const [businessСontexts, setBusinessСontexts] = useState(false);
+  const [mainRole, setMainRole] = useState(false);
+  const [onlyRiskFactor, setOnlyRiskFactor] = useState(false);
+  const [techNews, setTechNews] = useState(false);
+  const [notice, setNotice] = useState(false);
+  const [newsReports, setNewsReports] = useState(false);
+
   const dateNotCorrect = +startDateInput.date > +endDateInput.date;
-  const formNotCorrect =  innInput.isError || innInput.isError || endDateInput.isError || startDateInput.isError;
+  const formNotCorrect =  innInput.isError || quantityInput.isError || endDateInput.isError || startDateInput.isError;
 
   function redirectToResult() {
-    navigate(`/result?inn=${innInput.value}&tonality=${tonalityInput.value}&quantity=${quantityInput.value}`)
+    navigate(`/result?inn=${innInput.value}&tonality=${tonalityInput.value}&quantity=${quantityInput.value}&start=${startDateInput.value}&end=${endDateInput.value}`)
   }
 
   return (
@@ -100,19 +107,56 @@ export function SearchForm() {
               errorMsg={endDateInput.errorMsg} 
             />
           
-            {dateNotCorrect && <span>Введите корректные данные</span>}
+            {dateNotCorrect && <span className={classes["input-date-error"]}>Введите корректные данные</span>}
           </div>
         </Label>
       </div>
 
       <div className={classes["checkbox-field"]}>
-        
+        <Checkbox 
+          checked={maxFullness}
+          setCheked={setMaxFullness}
+          label="Признак максимальной полноты"
+        />
+        <Checkbox 
+          checked={businessСontexts}
+          setCheked={setBusinessСontexts}
+          label="Упоминания в бизнес-контексте"
+        />
+        <Checkbox 
+          checked={mainRole}
+          setCheked={setMainRole}
+          label="Главная роль в публикации"
+        />
+        <Checkbox 
+          checked={onlyRiskFactor}
+          setCheked={setOnlyRiskFactor}
+          label="Публикации только с риск-факторами"
+        />
+        <Checkbox 
+          checked={techNews}
+          setCheked={setTechNews}
+          label="Включать технические новости рынков"
+        />
+        <Checkbox 
+          checked={notice}
+          setCheked={setNotice}
+          label="Включать анонсы и календари"
+        />
+        <Checkbox 
+          checked={newsReports}
+          setCheked={setNewsReports}
+          label="Включать сводки новостей"
+        />
       </div>
 
-      {formNotCorrect
-        ? <Button disabled className={classes["submit-btn"]} type="submit" theme={ButtonTheme.SECONDARY}>Поиск</Button>
-        : <Button className={classes["submit-btn"]} type="submit" theme={ButtonTheme.SECONDARY} onClick={(e) => {e.preventDefault(); redirectToResult()}}>Поиск</Button>
-      }
+      <div className={classes["input-submit-field"]}>
+        {formNotCorrect
+          ? <Button disabled className={classes["submit-btn"]} type="submit" theme={ButtonTheme.SECONDARY}>Поиск</Button>
+          : <Button className={classes["submit-btn"]} type="submit" theme={ButtonTheme.SECONDARY} onClick={(e) => {e.preventDefault(); redirectToResult()}}>Поиск</Button>
+        }
+        <span className={classes["form-info"]}>* Обязательные к заполнению поля</span>
+      </div>
     </form>
   );
 }
