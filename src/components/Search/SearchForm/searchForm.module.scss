@@ -7,11 +7,17 @@
 .input-field {
   display: flex;
   flex-direction: column;
-  row-gap: 7px;
+  row-gap: 30px;
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 3;
+}
+
+.input-date-field {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
 }
 
 .checkbox-field {
@@ -35,6 +41,7 @@
 }
 
 .input {
+  padding-left: 17px;
   width: 242px;
   height: 43px;
 }
@@ -43,4 +50,17 @@
   &::placeholder {
     text-align: center;
   }
+}
+
+.input-select {
+  padding-left: 22px;
+  border: 1px solid #C7C7C7;
+  box-shadow: 0 0 20px 0 rgb(0 0 0 / 5%);
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.input-date {
+  width: 176px;
+  height: 43px;
 }

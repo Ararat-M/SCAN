@@ -16,6 +16,7 @@ type InputType =
         | "time"
         | "url"
         | "week"
+        | "radio-button"
         | "login";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {

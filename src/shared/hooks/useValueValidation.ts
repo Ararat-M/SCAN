@@ -9,19 +9,19 @@ export interface ValueValidation {
   correctPhoneNumber?: boolean;
 }
 
-export function useValueValidation(value: string, validations: ValueValidation, wasUsed = true) {
+export function useValueValidation(value: string, validations: ValueValidation) {
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
   const valueLength = value.replaceAll(" ", '').length;
   const correctPhoneNumberRegex = /^[0-9+]+$/;
 
-  const requaired = wasUsed && validations.required && !value;
-  const minLength = wasUsed && validations.minLength && (valueLength > 0) && (valueLength < validations.minLength);
+  const requaired = validations.required && !value;
+  const minLength = validations.minLength && (valueLength > 0) && (valueLength < validations.minLength);
   const maxLength = validations.maxLength && (valueLength > validations.maxLength);
   const minValue = validations.minValue && (+value < validations.minValue);
   const maxValue = validations.maxValue && (+value > validations.maxValue);
-  const correctPhoneNumber = wasUsed && validations.correctPhoneNumber && value[0] === "+" && (!(valueLength === 12) || !correctPhoneNumberRegex.test(value.replace(/ /g, "")))
+  const correctPhoneNumber = validations.correctPhoneNumber && value[0] === "+" && (!(valueLength === 12) || !correctPhoneNumberRegex.test(value.replace(/ /g, "")))
 
   useEffect(() => {
     if (requaired) {
@@ -61,7 +61,7 @@ export function useValueValidation(value: string, validations: ValueValidation, 
     }
 
     setIsError(false)
-  }, [value, wasUsed])
+  }, [value])
 
   return [
     isError,
