@@ -1,39 +1,55 @@
 import { useEffect, useState } from "react"
 
-export interface InputValidation {
+export interface ValueValidation {
   required?: boolean;
-  maxLength?: number;
   minLength?: number;
+  maxLength?: number;
+  minValue?: number;
+  maxValue?: number;
   correctPhoneNumber?: boolean;
 }
 
-export function useInputValidation(value: string, validations: InputValidation, wasUsed = true) {
+export function useValueValidation(value: string, validations: ValueValidation, wasUsed = true) {
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
   const valueLength = value.replaceAll(" ", '').length;
   const correctPhoneNumberRegex = /^[0-9+]+$/;
 
-  const requairedErr = wasUsed && validations.required && !value;
-  const minLengthErr = wasUsed && validations.minLength && (valueLength > 0) && (valueLength < validations.minLength);
+  const requaired = wasUsed && validations.required && !value;
+  const minLength = wasUsed && validations.minLength && (valueLength > 0) && (valueLength < validations.minLength);
+  const maxLength = validations.maxLength && (valueLength > validations.maxLength);
+  const minValue = validations.minValue && (+value < validations.minValue);
+  const maxValue = validations.maxValue && (+value > validations.maxValue);
   const correctPhoneNumber = wasUsed && validations.correctPhoneNumber && value[0] === "+" && (!(valueLength === 12) || !correctPhoneNumberRegex.test(value.replace(/ /g, "")))
-  const maxLengthErr = validations.maxLength && (valueLength > validations.maxLength);
 
   useEffect(() => {
-    if (requairedErr) {
+    if (requaired) {
       setErrorMsg("Заполните поле")
       setIsError(true)
       return
     }
 
-    if (minLengthErr) {
+    if (minLength) {
       setErrorMsg(`Минимум ${validations.minLength} символов (${valueLength})`)
       setIsError(true)
       return
     }
 
-    if (maxLengthErr) {
+    if (maxLength) {
       setErrorMsg(`Максимум ${validations.maxLength} символов (${valueLength})`)
+      setIsError(true)
+      return
+    }
+
+    if (minValue) {
+      setErrorMsg(`Минимум ${validations.minValue}`)
+      setIsError(true)
+      return
+    }
+
+    if (maxValue) {
+      setErrorMsg(`Максимум ${validations.maxValue}`)
       setIsError(true)
       return
     }

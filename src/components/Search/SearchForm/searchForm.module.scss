@@ -1,0 +1,46 @@
+.form {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  row-gap: 7px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.checkbox-field {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.submit-btn {
+  align-self: end;
+  justify-self: end;
+  height: fit-content;
+  width: fit-content;
+  padding: 16px 117px;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  font-size: 22px;
+}
+
+.input {
+  width: 242px;
+  height: 43px;
+}
+
+.input-quantity {
+  &::placeholder {
+    text-align: center;
+  }
+}

@@ -4,22 +4,20 @@ import { useState } from "react";
 import { Button, ButtonTheme } from "shared/ui/Button";
 import { Link } from "react-router-dom";
 import { IconFacebook, IconGoogle, IconYandex } from "shared/assets/svg"
-import { useInputValidation } from "shared/hooks/useInputValidation";
+import { useValueValidation } from "shared/hooks/useValueValidation";
 
 export function AuthForm() {
   const [loginValue, setLoginValue] = useState("")
-  const [loginIsError, loginErrorMsg] = useInputValidation(loginValue, {
+  const [loginIsError, loginErrorMsg] = useValueValidation(loginValue, {
     required: true,
     correctPhoneNumber: true
   })
 
   const [passwordValue, setPasswordValue] = useState("")
-  const [passwordIsError, passwordErrorMsg] = useInputValidation(passwordValue, {
+  const [passwordIsError, passwordErrorMsg] = useValueValidation(passwordValue, {
     required: true,
     minLength: 6
   })
-  
-  console.log(loginIsError || passwordIsError)
 
   return (
     <form className={classes.form}>
@@ -48,7 +46,7 @@ export function AuthForm() {
         </label>
 
         {loginIsError || passwordIsError
-          ? <Button disabled={true} className={classes["submit-btn"]} type="submit" theme={ButtonTheme.SECONDARY}>Войти</Button>
+          ? <Button disabled className={classes["submit-btn"]} type="submit" theme={ButtonTheme.SECONDARY}>Войти</Button>
           : <Button className={classes["submit-btn"]} type="submit" theme={ButtonTheme.SECONDARY}>Войти</Button>
         }
 

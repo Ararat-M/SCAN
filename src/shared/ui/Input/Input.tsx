@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, type InputHTMLAttributes, useState, useEffect } from "react";
 import classes from "./input.module.scss";
 import { classNames } from "shared/lib/classNames";
-import { type InputValidation, useInputValidation } from "shared/hooks/useInputValidation";
+import { type ValueValidation } from "shared/hooks/useValueValidation";
 
 type InputType =
         | "date"
@@ -21,14 +21,21 @@ type InputType =
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   value: string;
   setValue: Dispatch<SetStateAction<string>>;
-  label?: string;
   type?: InputType;
-  validations?: InputValidation;
+  validations?: ValueValidation;
   isError?: boolean;
   errorMsg?: string;
 }
 
-export function Input({value, label, setValue, validations, isError = false, errorMsg, type="text", ...props}: InputProps) {
+export function Input({
+  value,
+  setValue,
+  validations,
+  isError = false,
+  errorMsg,
+  type="text",
+  ...props
+}: InputProps) {
   const [wasUsed, setWasUsed] = useState(false);
 
   const additionalCls = [props.className || ""]
@@ -42,46 +49,20 @@ export function Input({value, label, setValue, validations, isError = false, err
   
       setValue(valueWithMask.trim())
     }
-  }, [value])
+  }, [value, type])
 
   return (
-    <>
-      {label ? (
-        // Рендер с label
-        <label className={classes.label} htmlFor={props.id}>
-          <span>
-            {label}
-            {props.required && <span style={isError ? {color: "red"} : {}}> *</span>}
-          </span>
-          
-          <input
-            id={props.id}
-            type={type}
-            value={value}
-            onChange={(e) => setValue(e.currentTarget.value)}
-            onBlur={() => !wasUsed && setWasUsed(true)}
-            className={classNames(classes.input, additionalCls, mods)}
-            {...props}
-          />
-          
-          {isError && wasUsed && <span className={classes["error-msg"]}>{errorMsg}</span>}
-        </label>
-      ) : (
-        // Рендер без label
-        <>
-          <input
-            id={props.id}
-            type={type}
-            value={value}
-            onChange={(e) => setValue(e.currentTarget.value)}
-            onBlur={() => !wasUsed && setWasUsed(true)}
-            className={classNames(classes.input, additionalCls, mods)}
-            {...props}
-          />
-          
-          {isError && wasUsed && <span className={classes["error-msg"]}>{errorMsg}</span>}
-        </>
-      )}
-    </>
+    <div className={classes["input-wrapper"]}>
+      <input
+        {...props}
+        type={type}
+        value={value}
+        onChange={(e) => setValue(e.currentTarget.value)}
+        onBlur={() => !wasUsed && setWasUsed(true)}
+        className={classNames(classes.input, additionalCls, mods)}
+      />
+      
+      {isError && wasUsed && <span className={classes["error-msg"]}>{errorMsg}</span>}
+    </div>
   );
 };
