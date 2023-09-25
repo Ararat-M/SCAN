@@ -9,8 +9,6 @@ export interface DateValidation {
 export function useDateValidation(Date: Date, validations: DateValidation) {
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  const [date, setDate] = useState(Date);
-
 
   const requaired = validations.required && Date.toString() === "Invalid Date";
   const minDate = validations.minDate && (Date < validations.minDate);
@@ -25,17 +23,16 @@ export function useDateValidation(Date: Date, validations: DateValidation) {
 
     if (minDate) {
       setIsError(true)
-      setErrorMsg("")
       return
     }
     
     if (maxDate) {
       setIsError(true)
-      setErrorMsg("")
       return
     }
 
     setIsError(false)
+    setErrorMsg("")
   }, [Date])
 
   return [

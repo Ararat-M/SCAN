@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction, type InputHTMLAttributes, useState, useEffect } from "react";
 import classes from "./input.module.scss";
 import { classNames } from "shared/lib/classNames";
-import { type ValueValidation } from "shared/hooks/useValueValidation";
 
 type InputType =
         | "date"
@@ -22,23 +21,25 @@ type InputType =
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   value: string;
   setValue: Dispatch<SetStateAction<string>>;
+  wasUsed: boolean;
+  setWasUsed: Dispatch<SetStateAction<boolean>>;
   type?: InputType;
-  validations?: ValueValidation;
   isError?: boolean;
   errorMsg?: string;
+  fluid?: boolean;
 }
 
 export function Input({
   value,
   setValue,
-  validations,
+  wasUsed,
+  setWasUsed,
   isError = false,
   errorMsg,
   type="text",
+  fluid,
   ...props
 }: InputProps) {
-  const [wasUsed, setWasUsed] = useState(false);
-
   const additionalCls = [props.className || ""]
   const mods = {[classes.error]: isError && wasUsed}
 
@@ -53,8 +54,9 @@ export function Input({
   }, [value, type])
 
   return (
-    <div className={classes["input-wrapper"]}>
+    <div style={fluid ? { width: "100%" } : { }} className={classes["input-wrapper"]}>
       <input
+        style={fluid ? { width: "100%" } : { }}
         {...props}
         type={type}
         value={value}

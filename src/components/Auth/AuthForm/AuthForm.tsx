@@ -1,51 +1,49 @@
 import { Input } from "shared/ui/Input";
 import classes from "./authForm.module.scss";
-import { useState } from "react";
 import { Button, ButtonTheme } from "shared/ui/Button";
 import { Link } from "react-router-dom";
 import { IconFacebook, IconGoogle, IconYandex } from "shared/assets/svg"
-import { useValueValidation } from "shared/hooks/useValueValidation";
+import { useInput } from "shared/hooks/useInput";
 
 export function AuthForm() {
-  const [loginValue, setLoginValue] = useState("")
-  const [loginIsError, loginErrorMsg] = useValueValidation(loginValue, {
-    required: true,
-    correctPhoneNumber: true
-  })
-
-  const [passwordValue, setPasswordValue] = useState("")
-  const [passwordIsError, passwordErrorMsg] = useValueValidation(passwordValue, {
-    required: true,
-    minLength: 6
-  })
+  const [loginInput] = useInput("", { required: true, correctPhoneNumber: true})
+  const [passwordInput] = useInput("", { required: true, minLength: 6})
 
   return (
     <form className={classes.form}>
         <label htmlFor="login" className={classes.label}>
           <span className={classes["lable-text"]}>Логин или номер телефона:</span>
           <Input
+            className={classes.input}
+            fluid
             id="login"
             type="login"
-            value={loginValue}
-            setValue={setLoginValue}
-            isError={loginIsError}
-            errorMsg={loginErrorMsg}
+            value={loginInput.value}
+            setValue={loginInput.setValue}
+            wasUsed={loginInput.wasUsed}
+            setWasUsed={loginInput.setWasUsed}
+            isError={loginInput.isError}
+            errorMsg={loginInput.errorMsg}
           />
         </label>
 
         <label htmlFor="pass" className={classes.label}>
           <span className={classes["lable-text"]}>Пароль:</span>
           <Input
+            className={classes.input}
+            fluid
             id="pass"
             type="password"
-            value={passwordValue}
-            setValue={setPasswordValue}
-            isError={passwordIsError}
-            errorMsg={passwordErrorMsg}
+            value={passwordInput.value}
+            setValue={passwordInput.setValue}
+            wasUsed={passwordInput.wasUsed}
+            setWasUsed={passwordInput.setWasUsed}
+            isError={passwordInput.isError}
+            errorMsg={passwordInput.errorMsg}
           />
         </label>
 
-        {loginIsError || passwordIsError
+        {loginInput.isError || passwordInput.isError
           ? <Button disabled className={classes["submit-btn"]} type="submit" theme={ButtonTheme.SECONDARY}>Войти</Button>
           : <Button className={classes["submit-btn"]} type="submit" theme={ButtonTheme.SECONDARY}>Войти</Button>
         }
