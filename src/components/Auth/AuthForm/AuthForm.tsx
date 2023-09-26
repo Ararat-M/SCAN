@@ -4,10 +4,24 @@ import { Button, ButtonTheme } from "shared/ui/Button";
 import { Link } from "react-router-dom";
 import { IconFacebook, IconGoogle, IconYandex } from "shared/assets/svg"
 import { useInput } from "shared/hooks/useInput";
+import { useAppDispatch } from "shared/hooks/useAppDispatch";
+import { useSelector } from "react-redux";
+import { getAuthState } from "features/Auth/selectors/getAuthState";
+import { login } from "features/Auth/services/login";
 
 export function AuthForm() {
   const [loginInput] = useInput("", { required: true, correctPhoneNumber: true})
   const [passwordInput] = useInput("", { required: true, minLength: 6})
+
+  const dispatch = useAppDispatch();
+  const { error, isLoading } = useSelector(getAuthState);
+
+  function buttonHandler() {
+    dispatch(login({
+      login: loginInput.value,
+      password: passwordInput.value
+    }));
+  }
 
   return (
     <form className={classes.form}>
@@ -43,9 +57,9 @@ export function AuthForm() {
           />
         </label>
 
-        {loginInput.isError || passwordInput.isError
+        {loginInput.isError || passwordInput.isError || isLoading
           ? <Button disabled className={classes["submit-btn"]} type="submit" theme={ButtonTheme.SECONDARY}>Войти</Button>
-          : <Button className={classes["submit-btn"]} type="submit" theme={ButtonTheme.SECONDARY}>Войти</Button>
+          : <Button className={classes["submit-btn"]} type="submit" theme={ButtonTheme.SECONDARY} onClick={(e) => {e.preventDefault(); buttonHandler()}}>Войти</Button>
         }
 
         <Link className={classes.link} to="/">Восстановить пароль</Link>

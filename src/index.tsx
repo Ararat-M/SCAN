@@ -3,14 +3,18 @@ import { createRoot } from "react-dom/client";
 import { App } from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { StrictMode } from "react";
+import { StoreProvider } from "store";
 
 const rootNode = document.getElementById("root");
 if (rootNode != null) {
   const root = createRoot(rootNode);
+  
   root.render(
     <StrictMode>
       <BrowserRouter>
+      <StoreProvider>
         <App />
+      </StoreProvider>
       </BrowserRouter>
     </StrictMode>
   );
