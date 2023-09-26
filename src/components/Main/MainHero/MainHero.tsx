@@ -1,11 +1,11 @@
 import { getAuthData } from "features/Auth/selectors/getAuthData";
-import classes from "./hero.module.scss";
+import classes from "./mainHero.module.scss";
 import heroImage from "shared/assets/images/hero-image.jpg";
 import { useAppSelector } from "shared/hooks/useAppSelector";
 import { Button, ButtonTheme } from "shared/ui/Button";
 import { Link } from "react-router-dom";
 
-export function Hero() {
+export function MainHero() {
   const authData = useAppSelector(getAuthData)
 
   return (

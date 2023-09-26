@@ -7,10 +7,9 @@ import { Label } from "shared/ui/Lable";
 import { useInput } from "shared/hooks/useInput";
 import { useDateInput } from "shared/hooks/useDateInput";
 import { Checkbox } from "shared/ui/CheckBox/CheckBox";
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 
 export function SearchForm() {
-  const navigate = useNavigate();
   // inputs
   const [innInput] = useInput("", { required: true });
   const [quantityInput] = useInput("", { required: true, minValue: 1, maxValue: 1000 });
@@ -30,12 +29,12 @@ export function SearchForm() {
   const dateNotCorrect = +startDateInput.date > +endDateInput.date;
   const formNotCorrect =  innInput.isError || quantityInput.isError || endDateInput.isError || startDateInput.isError;
 
-  function redirectToResult() {
-    navigate(`/result?inn=${innInput.value}&tonality=${tonalityInput.value}&quantity=${quantityInput.value}&start=${startDateInput.value}&end=${endDateInput.value}`)
+  function submitHandler(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
   }
 
   return (
-    <form className={classes.form}>
+    <form className={classes.form} onSubmit={submitHandler}>
       <div className={classes["input-field"]}>
         <Label id="inn" text="ИНН компании" required isError={innInput.isError && innInput.wasUsed}>
           <Input
@@ -153,7 +152,7 @@ export function SearchForm() {
       <div className={classes["input-submit-field"]}>
         {formNotCorrect
           ? <Button disabled className={classes["submit-btn"]} type="submit" theme={ButtonTheme.SECONDARY}>Поиск</Button>
-          : <Button className={classes["submit-btn"]} type="submit" theme={ButtonTheme.SECONDARY} onClick={(e) => {e.preventDefault(); redirectToResult()}}>Поиск</Button>
+          : <Button className={classes["submit-btn"]} type="submit" theme={ButtonTheme.SECONDARY}>Поиск</Button>
         }
         <span className={classes["form-info"]}>* Обязательные к заполнению поля</span>
       </div>

@@ -1,0 +1,1 @@
+export { ResultCarousel } from "./ResultCarousel";

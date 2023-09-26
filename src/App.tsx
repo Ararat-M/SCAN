@@ -2,13 +2,13 @@ import { Auth } from "components/Auth";
 import { Footer } from "components/Footer";
 import { Header } from "components/Header";
 import { Main } from "components/Main";
+import { Result } from "components/Result";
 import { Search } from "components/Search";
 import { getAuthData, init } from "features/Auth";
 import { Suspense, useEffect } from "react";
 import { Routes, Route } from "react-router";
 import { useAppDispatch } from "shared/hooks/useAppDispatch";
 import { useAppSelector } from "shared/hooks/useAppSelector";
-import { ProtectedRouter } from "shared/lib/ProtectedRouter/ProtectedRouter";
 
 export function App() {
   const dispatch = useAppDispatch();
@@ -30,9 +30,13 @@ export function App() {
               <Route
                 path="/search"
                 element={
-                  <ProtectedRouter hasAcces={authData.isAuth} redirectTo={"/"}>
-                    <Search/>
-                  </ProtectedRouter>
+                  <Search/>
+                }
+              />
+              <Route
+                path="/result"
+                element={
+                  <Result/>
                 }
               />
           </Routes>
