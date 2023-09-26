@@ -18,7 +18,6 @@ export function Result() {
       <section className={classNames(classes.documents, ["container"])}>
         <DocumentList></DocumentList>
       </section>
-      
     </>
   );
 }
