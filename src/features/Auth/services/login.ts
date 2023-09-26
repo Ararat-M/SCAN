@@ -1,23 +1,22 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { API_URL } from "shared/const";
 
 interface AuthData {
   login: string;
   password: string;
 }
 
-const URL = "https://gateway.scan-interfax.ru/api/v1/account/login"
-
 interface AuthResponse {
   accessToken: string;
   expire: string;
 }
 
-export const login = createAsyncThunk<AuthResponse | undefined, AuthData, { rejectValue: string }>(
+export const login = createAsyncThunk<AuthResponse, AuthData, { rejectValue: string }>(
   "auth/login",
   async (authData, thunkAPI) => {
     try {
-      const response = await axios.post<AuthResponse>(URL, {
+      const response = await axios.post<AuthResponse>(API_URL + "/login", {
         login: authData.login, 
         password: authData.password
       });

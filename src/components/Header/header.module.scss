@@ -1,6 +1,11 @@
+.header { 
+ min-height: 93px;
+}
+
 .content {
   display: flex;
   align-items: center;
+  min-height: 93px;
 }
 
 .logo {

@@ -1,8 +1,9 @@
 import { UserSchema } from "enteties/User/types/UserSchema";
 import { AuthSchema } from "features/Auth";
-import { type User } from "models/User";
+import { UserInfoSchema } from "features/UserInfo";
 
 export interface StateSchema {
+  user: UserSchema,
   auth: AuthSchema,
-  user: UserSchema
+  userInfo: UserInfoSchema
 }

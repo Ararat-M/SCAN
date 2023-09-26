@@ -45,8 +45,8 @@ export const authSlice = createSlice({
         state.error = undefined;
       })
       .addCase(login.fulfilled, (state, action) => {
-        state.accessToken = action.payload?.accessToken || "";
-        state.expire = action.payload?.expire || "";
+        state.accessToken = action.payload.accessToken;
+        state.expire = action.payload.expire;
         state.isAuth = true;
         state.isLoading = false;
       })

@@ -1,7 +1,9 @@
 export { AuthSchema } from "./types/AuthSchema"
-export { authSlice } from "./slice/AuthSlice"
-export { authReducer } from "./slice/AuthSlice"
-export { getAuthState } from "./selectors/getAuthState"
+
+export { authSlice, authReducer } from "./slice/authSlice"
+
+export { getAuthData } from "./selectors/getAuthData"
+export { getAccesToken } from "./selectors/getAccesToken"
 
 export { login } from "./services/login"
 export { init } from "./services/init"

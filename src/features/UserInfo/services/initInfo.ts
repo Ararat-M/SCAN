@@ -1,26 +1,29 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { userSlice } from "enteties/User";
-import { UserSchema } from "enteties/User";
 import { API_URL } from "shared/const";
 
-interface UserData {
+interface RequestData {
   accessToken: string;
 }
 
-export const init = createAsyncThunk<UserSchema, UserData, { rejectValue: string }>(
-  "auth/init",
+interface ResponseData {
+  eventFiltersInfo: {
+    usedCompanyCount: number;
+    companyLimit: number;
+  }
+}
+
+export const initInfo = createAsyncThunk<ResponseData, RequestData, { rejectValue: string }>(
+  "user/info",
   async (userData, thunkAPI) => {
     try {
-      const response = await axios<UserSchema>(API_URL + "/account/balance", {
+      const response = await axios<ResponseData>(API_URL + "/account/info", {
         headers: {Authorization: `bearer ${userData.accessToken.replace(/"/g, "")}`}
       });
 
       if (response.data == null) {
         throw new Error();
       }
-
-      thunkAPI.dispatch(userSlice.actions.setUserData(response.data))
 
       return response.data;
     } catch (error) {

@@ -6,7 +6,7 @@ import { IconFacebook, IconGoogle, IconYandex } from "shared/assets/svg"
 import { useInput } from "shared/hooks/useInput";
 import { useAppDispatch } from "shared/hooks/useAppDispatch";
 import { useSelector } from "react-redux";
-import { getAuthState } from "features/Auth/selectors/getAuthState";
+import { getAuthData } from "features/Auth/selectors/getAuthData";
 import { login } from "features/Auth/services/login";
 
 export function AuthForm() {
@@ -14,7 +14,7 @@ export function AuthForm() {
   const [passwordInput] = useInput("", { required: true, minLength: 6})
 
   const dispatch = useAppDispatch();
-  const { error, isLoading } = useSelector(getAuthState);
+  const { isLoading } = useSelector(getAuthData);
 
   function buttonHandler() {
     dispatch(login({
