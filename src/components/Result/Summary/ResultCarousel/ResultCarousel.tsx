@@ -5,7 +5,7 @@ import { useRef } from "react";
 import AliceCarousel from "react-alice-carousel";
 import { Button, ButtonTheme } from "shared/ui/Button";
 import { useAppSelector } from "shared/hooks/useAppSelector";
-import { HistogramSchema, getHistogramData } from "features/Histogram";
+import { HistogramSchema, getHistogramData } from "features/ObjectSearch";
 
 interface ResultCarouselProps extends Pick<HistogramSchema, "data"> {
   

@@ -7,9 +7,8 @@ import { useInput } from "shared/hooks/useInput";
 import { useDateInput } from "shared/hooks/useDateInput";
 import { Checkbox } from "shared/ui/CheckBox/CheckBox";
 import { useState } from "react";
-import { useAppSelector } from "shared/hooks/useAppSelector";
 import { useAppDispatch } from "shared/hooks/useAppDispatch";
-import { Tonality, getFilter } from "enteties/Filter";
+import { Tonality } from "enteties/Filter";
 import { filterActions } from "enteties/Filter/slice/filterSlice";
 import { useNavigate } from "react-router";
 

@@ -16,11 +16,10 @@ export const histogramSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getHistogram.pending, (state) => {
+        state.data = initialState.data;
         state.isLoading = true;
       })
       .addCase(getHistogram.fulfilled, (state, action) => {
-        state.data = [];
-
         action.payload.data.forEach((item) => {
           if (item.histogramType === "totalDocuments") {
             item.data.forEach((item) => {

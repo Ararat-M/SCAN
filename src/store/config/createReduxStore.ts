@@ -4,7 +4,7 @@ import { authReducer } from "features/Auth";
 import { userReducer } from "enteties/User";
 import { userInfoReducer } from "features/UserInfo";
 import { filterReducer } from "enteties/Filter";
-import { histogramReducer } from "features/Histogram";
+import { histogramReducer, postsIdReducer } from "features/ObjectSearch";
 
 export function createReduxStore(initialState?: StateSchema) {
   const rootReducers: ReducersMapObject<StateSchema> = {
@@ -12,7 +12,8 @@ export function createReduxStore(initialState?: StateSchema) {
     user: userReducer,
     userInfo: userInfoReducer,
     filter: filterReducer,
-    histogram: histogramReducer
+    histogram: histogramReducer,
+    postsId: postsIdReducer
   };
 
   return configureStore<StateSchema>({

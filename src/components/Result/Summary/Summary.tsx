@@ -4,7 +4,7 @@ import { useAppSelector } from "shared/hooks/useAppSelector";
 import { useAppDispatch } from "shared/hooks/useAppDispatch";
 import { getFilter } from "enteties/Filter";
 import { useEffect } from "react";
-import { getHistogram, getHistogramData } from "features/Histogram";
+import { getHistogram, getHistogramData, getPostsId } from "features/ObjectSearch";
 
 export function Summary() {
   const dispatch = useAppDispatch()
@@ -13,6 +13,7 @@ export function Summary() {
 
   useEffect(() => {
     dispatch(getHistogram(filter))
+    dispatch(getPostsId(filter))
   }, [])
 
   return (
