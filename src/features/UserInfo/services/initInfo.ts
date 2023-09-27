@@ -18,7 +18,9 @@ export const initInfo = createAsyncThunk<ResponseData, RequestData, { rejectValu
   async (userData, thunkAPI) => {
     try {
       const response = await axios<ResponseData>(API_URL + "/account/info", {
-        headers: {Authorization: `bearer ${userData.accessToken.replace(/"/g, "")}`}
+        headers: {
+          Authorization: `bearer ${userData.accessToken}`
+        }
       });
 
       if (response.data == null) {

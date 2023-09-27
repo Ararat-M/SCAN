@@ -7,9 +7,16 @@ import { Label } from "shared/ui/Lable";
 import { useInput } from "shared/hooks/useInput";
 import { useDateInput } from "shared/hooks/useDateInput";
 import { Checkbox } from "shared/ui/CheckBox/CheckBox";
-import { MouseEventHandler, useState } from "react";
+import { useEffect, useState } from "react";
+import { useAppSelector } from "shared/hooks/useAppSelector";
+import { getAccesToken } from "features/Auth";
+import { getHistogram } from "features/Histogram/services/getHistogram";
+import { useAppDispatch } from "shared/hooks/useAppDispatch";
 
 export function SearchForm() {
+  const dispatch = useAppDispatch()
+  const token = useAppSelector(getAccesToken)
+  
   // inputs
   const [innInput] = useInput("", { required: true });
   const [quantityInput] = useInput("", { required: true, minValue: 1, maxValue: 1000 });
@@ -31,6 +38,8 @@ export function SearchForm() {
 
   function submitHandler(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    
+    dispatch(getHistogram({ accessToken: token}))
   }
 
   return (

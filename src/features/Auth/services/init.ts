@@ -12,8 +12,12 @@ export const init = createAsyncThunk<UserSchema, UserData, { rejectValue: string
   "auth/init",
   async (userData, thunkAPI) => {
     try {
+      console.log(userData.accessToken);
+      
       const response = await axios<UserSchema>(API_URL + "/account/balance", {
-        headers: {Authorization: `bearer ${userData.accessToken.replace(/"/g, "")}`}
+        headers: {
+          Authorization: `bearer ${userData.accessToken}`
+        }
       });
 
       if (response.data == null) {

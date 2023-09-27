@@ -4,8 +4,8 @@ import { login } from "../services/login";
 import { init } from "../services/init";
 
 const initialState: AuthSchema = {
-  accessToken: localStorage.getItem("token") || "",
-  expire: localStorage.getItem("expire") || "",
+  accessToken: JSON.parse(localStorage.getItem("token")!) || "",
+  expire: JSON.parse(localStorage.getItem("token")!) || "",
   isAuth: false,
   isLoading: false,
   error: ""
