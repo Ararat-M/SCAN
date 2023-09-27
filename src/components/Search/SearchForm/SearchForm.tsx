@@ -2,44 +2,71 @@ import { Input } from "shared/ui/Input";
 import classes from "./searchForm.module.scss";
 import { Button, ButtonTheme } from "shared/ui/Button";
 import { classNames } from "shared/lib/classNames";
-import { useNavigate } from "react-router";
 import { Label } from "shared/ui/Lable";
 import { useInput } from "shared/hooks/useInput";
 import { useDateInput } from "shared/hooks/useDateInput";
 import { Checkbox } from "shared/ui/CheckBox/CheckBox";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAppSelector } from "shared/hooks/useAppSelector";
-import { getAccesToken } from "features/Auth";
-import { getHistogram } from "features/Histogram/services/getHistogram";
 import { useAppDispatch } from "shared/hooks/useAppDispatch";
+import { Tonality, getFilter } from "enteties/Filter";
+import { filterActions } from "enteties/Filter/slice/filterSlice";
+import { useNavigate } from "react-router";
 
 export function SearchForm() {
-  const dispatch = useAppDispatch()
-  const token = useAppSelector(getAccesToken)
-  
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   // inputs
-  const [innInput] = useInput("", { required: true });
-  const [quantityInput] = useInput("", { required: true, minValue: 1, maxValue: 1000 });
+  const [innInput] = useInput("7710137066", { required: true });
+  const [quantityInput] = useInput("700", { required: true, minValue: 1, maxValue: 1000 });
   const [tonalityInput] = useInput("any");
   // date inputs
-  const [startDateInput] = useDateInput("", { required: true });
-  const [endDateInput] = useDateInput("", { required: true });
+  const [startDateInput] = useDateInput("2022-01-01", { required: true });
+  const [endDateInput] = useDateInput("2023-09-25", { required: true });
   // checkboxes
   const [maxFullness, setMaxFullness] = useState(false);
   const [businessСontexts, setBusinessСontexts] = useState(false);
   const [mainRole, setMainRole] = useState(false);
   const [onlyRiskFactor, setOnlyRiskFactor] = useState(false);
   const [techNews, setTechNews] = useState(false);
-  const [notice, setNotice] = useState(false);
-  const [newsReports, setNewsReports] = useState(false);
+  const [announcements, setAnnouncements] = useState(false);
+  const [digests, setDigests] = useState(false);
 
   const dateNotCorrect = +startDateInput.date > +endDateInput.date;
   const formNotCorrect =  innInput.isError || quantityInput.isError || endDateInput.isError || startDateInput.isError;
 
   function submitHandler(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    
-    dispatch(getHistogram({ accessToken: token}))
+
+    dispatch(filterActions.setFilter({
+      issueDateInterval: {
+        startDate: startDateInput.value,
+        endDate: endDateInput.value,
+      },
+      searchContext: {
+        targetSearchEntitiesContext: {
+          targetSearchEntities: [{
+            type: "company",
+            inBusinessNews: businessСontexts,
+            sparkId: null,
+            entityId: null,
+            inn: +innInput.value,
+            maxFullness: maxFullness
+          }],
+          onlyMainRole: mainRole,
+          onlyWithRiskFactors: onlyRiskFactor,
+          tonality: tonalityInput.value as Tonality,
+        }
+      },
+      limit: +quantityInput.value,
+      attributeFilters: {
+        excludeAnnouncements: announcements,
+        excludeDigests: digests,
+        excludeTechNews: techNews
+      }
+    }))
+
+    navigate("/result")
   }
 
   return (
@@ -147,13 +174,13 @@ export function SearchForm() {
           label="Включать технические новости рынков"
         />
         <Checkbox 
-          checked={notice}
-          setCheked={setNotice}
+          checked={announcements}
+          setCheked={setAnnouncements}
           label="Включать анонсы и календари"
         />
         <Checkbox 
-          checked={newsReports}
-          setCheked={setNewsReports}
+          checked={digests}
+          setCheked={setDigests}
           label="Включать сводки новостей"
         />
       </div>

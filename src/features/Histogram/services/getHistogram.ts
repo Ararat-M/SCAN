@@ -2,26 +2,34 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { HistogramSchema } from "../types/HistogramSchema";
 import axios from "axios";
 import { API_URL } from "shared/const";
-import { axiosConfig } from "api";
+import { headers } from "api";
+import { FilterSchema } from "enteties/Filter";
 
-interface RequestData {
-  accessToken: string;
+interface ResponseData {
+  data: [{
+    data: [{
+      date: string;
+      value: number;
+    }],
+    histogramType: "totalDocuments" | "riskFactors";
+  }]
 }
 
-export const getHistogram = createAsyncThunk<HistogramSchema, RequestData, { rejectValue: string} >(
+export const getHistogram = createAsyncThunk<ResponseData, FilterSchema, { rejectValue: string} >(
   "histogram/getHistogram",
-  async (data, thunAPI) => {
+  async (requestData, thunAPI) => {
     try {
-      const response = await axios.post<HistogramSchema>(API_URL + "/objectsearch/histograms", {
-          intervalType: "month"
-        },
-        {
-          headers: {
-          "Content-type": "application/json",
-          "Accept": "application/json",
-          "Authorization": `bearer ${data.accessToken}`,
-        }
-      });
+      const response = await axios.post<ResponseData>(API_URL + "/objectsearch/histograms", {
+        intervalType: requestData.intervalType,
+        histogramTypes: requestData.histogramTypes,
+        issueDateInterval: requestData.issueDateInterval,
+        searchContext: requestData.searchContext,
+        similarMode: requestData.similarMode,
+        limit: requestData.limit,
+        sortType: requestData.sortType,
+        sortDirectionType: requestData.sortDirectionType,
+        attributeFilters: requestData.attributeFilters
+      }, {headers});
 
       if (response.data == null) {
         throw new Error();

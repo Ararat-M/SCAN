@@ -1,25 +1,25 @@
 import { ResultCarousel } from "./ResultCarousel";
 import classes from "./summary.module.scss";
-
-const items = [
-  {data: "10.09.2021", count: 5, riskCount: 0},
-  {data: "10.09.2021", count: 5, riskCount: 0},
-  {data: "10.09.2021", count: 5, riskCount: 0},
-  {data: "10.09.2021", count: 5, riskCount: 0},
-  {data: "10.09.2021", count: 5, riskCount: 0},
-  {data: "10.09.2021", count: 5, riskCount: 0},
-  {data: "10.09.2021", count: 5, riskCount: 0},
-  {data: "10.09.2021", count: 5, riskCount: 0},
-  {data: "10.09.2021", count: 5, riskCount: 0},
-];
+import { useAppSelector } from "shared/hooks/useAppSelector";
+import { useAppDispatch } from "shared/hooks/useAppDispatch";
+import { getFilter } from "enteties/Filter";
+import { useEffect } from "react";
+import { getHistogram, getHistogramData } from "features/Histogram";
 
 export function Summary() {
+  const dispatch = useAppDispatch()
+  const filter = useAppSelector(getFilter)
+  const data = useAppSelector(getHistogramData)
+
+  useEffect(() => {
+    dispatch(getHistogram(filter))
+  }, [])
 
   return (
     <div>
       <h1 className={classes.title}>Общая сводка</h1>
       <span className={classes.counter}>Найдено count вариантов</span>
-      <ResultCarousel items={items}/>
+      <ResultCarousel data={data.data}/>
     </div>
   );
 }

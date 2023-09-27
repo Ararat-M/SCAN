@@ -1,10 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { API_URL } from "shared/const";
-
-interface RequestData {
-  accessToken: string;
-}
+import { headers } from "api";
 
 interface ResponseData {
   eventFiltersInfo: {
@@ -13,14 +10,12 @@ interface ResponseData {
   }
 }
 
-export const initInfo = createAsyncThunk<ResponseData, RequestData, { rejectValue: string }>(
+export const initInfo = createAsyncThunk<ResponseData, void, { rejectValue: string }>(
   "user/info",
-  async (userData, thunkAPI) => {
+  async (requestData, thunkAPI) => {
     try {
       const response = await axios<ResponseData>(API_URL + "/account/info", {
-        headers: {
-          Authorization: `bearer ${userData.accessToken}`
-        }
+        headers
       });
 
       if (response.data == null) {

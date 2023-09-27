@@ -4,18 +4,16 @@ import arrowRight from "shared/assets/images/arrow-right.jpg"
 import { useRef } from "react";
 import AliceCarousel from "react-alice-carousel";
 import { Button, ButtonTheme } from "shared/ui/Button";
+import { useAppSelector } from "shared/hooks/useAppSelector";
+import { HistogramSchema, getHistogramData } from "features/Histogram";
 
-interface info {
-  data: string;
-  count: number;
-  riskCount: number;
+interface ResultCarouselProps extends Pick<HistogramSchema, "data"> {
+  
 }
 
-interface ResultCarouselProps {
-  items: info[];
-}
-
-export function ResultCarousel({items}: ResultCarouselProps) {
+export function ResultCarousel({ data }: ResultCarouselProps) {
+  const { isLoading } = useAppSelector(getHistogramData)
+  
   const carouselRef = useRef<AliceCarousel>(null);
   
   return (
@@ -29,24 +27,30 @@ export function ResultCarousel({items}: ResultCarouselProps) {
             <div>Всего</div>
             <div>Риски</div>
           </div>
-          <AliceCarousel
-            infinite
-            paddingLeft={147}
-            ref={carouselRef}
-            mouseTracking
-            disableDotsControls
-            disableButtonsControls
-            items={items.map((item) => <div className={classes["summary-item"]}>
-              <div>{item.data}</div>
-              <div>{item.count}</div>
-              <div>{item.riskCount}</div>
-              </div>)}
-            responsive={{
-              0: {
-                items: 8
-              }
-            }}
-          />
+          {!isLoading ? (
+            <AliceCarousel
+              infinite
+              paddingLeft={147}
+              ref={carouselRef}
+              mouseTracking
+              disableDotsControls
+              disableButtonsControls
+              items={data.map((item) => <div className={classes["summary-item"]}>
+                <div>{item.date}</div>
+                <div>{item.totalValue}</div>
+                <div>{item.riskValue}</div>
+                </div>)}
+              responsive={{
+                0: {
+                  items: 8
+                }
+              }}
+            />
+          ) : (
+            <div className={classes.loader}>
+              Loading....
+            </div>
+          )}
         </div>
         <Button theme={ButtonTheme.CLEAR} onClick={() => carouselRef.current?.slideNext()}> 
           <img src={arrowRight} alt="right" />

@@ -12,10 +12,9 @@ import { authActions } from "features/Auth/slice/authSlice";
 export function UserPanel() {
   const dispatch = useAppDispatch();
   const userInfo = useAppSelector(getUserInfo);
-  const token = useAppSelector(getAccesToken);
 
   useEffect(() => {
-    dispatch(initInfo({accessToken: token}))
+    dispatch(initInfo())
   }, [])
 
   function logoutHandler() {

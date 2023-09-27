@@ -12,10 +12,9 @@ import { useAppSelector } from "shared/hooks/useAppSelector";
 
 export function App() {
   const dispatch = useAppDispatch();
-  const authData = useAppSelector(getAuthData);
 
   useEffect(() => {
-    dispatch(init({ accessToken: authData.accessToken }))
+    dispatch(init())
   }, [])
 
   return (

@@ -1,11 +1,9 @@
 export interface HistogramSchema {
-  data: [{
-    data: [{
-      data: string;
-      value: number;
-    }],
-    histogramType: Array<"totalDocuments" | "riskFactors">
-  }];
-  isLoading: boolean,
+  data: {
+    date: string;
+    totalValue: number;
+    riskValue: number;
+  }[];
+  isLoading: boolean;
   error?: string;
 }
