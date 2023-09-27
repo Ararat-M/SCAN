@@ -1,5 +1,4 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { HistogramSchema } from "../types/HistogramSchema";
 import axios from "axios";
 import { API_URL } from "shared/const";
 import { headers } from "api";
