@@ -21,12 +21,19 @@ export const scanDocSlice = createSlice({
 
         action.payload.forEach((item) => {
           if (!item.fail) {
+            let type = "null"
+
+            if (item.ok.attributes.isTechNews) type = "tech"
+            if (item.ok.attributes.isDigest) type = "isDigest"
+            if (item.ok.attributes.isAnnouncement) type = "isAnnouncement"
+            if (item.ok.attributes.isSpeechRecognition) type = "isSpeechRecognition"
+
             state.scanDocArr.push({
               date: item.ok.issueDate,
               url: item.ok.url,
               source: item.ok.source.name,
               title: item.ok.title.text,
-              type: item.ok.attributes.isTechNews ? "tech" : "",
+              type: type,
               img: "",
               description: item.ok.content.markup,
               wordCount: item.ok.attributes.wordCount

@@ -10,27 +10,31 @@ import { getPostsIdData } from "features/ObjectSearch";
 
 export function DocumentList() {
   const dispatch = useAppDispatch();
-  const { postsId } = useAppSelector(getPostsIdData);
+  const postsIdData = useAppSelector(getPostsIdData);
   const { scanDocArr } = useAppSelector(getScanDocData)
 
+  const [cardRenderLimit, setCardRenderLimit] = useState(2)
   const [startIndex, setStartIndex] = useState(0)
   const [endIndex, setEndIndex] = useState(10)
   
   useEffect(() => {
-    const dataPart = [];
-    
-    for (let i = startIndex; i < endIndex && i < postsId.length; i++) {
-      dataPart.push(postsId[i])
+    if (!postsIdData.isLoading) {
+      const dataPart = [];
+      
+      for (let i = startIndex; i < endIndex && i < postsIdData.postsId.length; i++) {
+        dataPart.push(postsIdData.postsId[i])
+      }
+      
+      dispatch(getScanDoc({ids: dataPart}));
     }
-    
-    dispatch(getScanDoc({ids: dataPart}));
-  }, [endIndex, postsId]);
+  }, [endIndex, postsIdData]);
 
   function btnHandler() {
-    setStartIndex(startIndex + 2)
+    setStartIndex(startIndex + 10);
+    setCardRenderLimit(endIndex);
     
-    if (startIndex == (endIndex - 2) && endIndex < postsId.length) {
-      setEndIndex(endIndex + 10)
+    if (endIndex < postsIdData.postsId.length) {
+      setEndIndex(endIndex + 10);
     }
   }
 
@@ -38,8 +42,8 @@ export function DocumentList() {
     <div>
       <h1 className={classes.title}>Список документов</h1>
       <div className={classes.list}>
-        {scanDocArr.map((scanDoc) => 
-          <DocumentCard card={scanDoc} />
+        {scanDocArr.map((scanDoc, index) => 
+          index < cardRenderLimit && <DocumentCard card={scanDoc} />
         )}
       </div>
       <Button 

@@ -1,4 +1,4 @@
-export { ScanDocSchema } from "./types/ScanDocSchema"
+export { ScanDocSchema, ScanDoc } from "./types/ScanDocSchema"
 export { scanDocSlice } from "./slice/scanDocSlice"
 export { scanDocReducer } from "./slice/scanDocSlice"
 export { getScanDoc } from "./services/getScanDoc"

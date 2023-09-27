@@ -1,6 +1,6 @@
 import { Button, ButtonTheme } from "shared/ui/Button";
 import classes from "./documentCard.module.scss";
-import { useEffect, useRef, useState } from "react";
+import { formatDate } from "shared/lib/formatDate/formatDate";
 
 interface scanDoc {
   date: string;
@@ -16,7 +16,7 @@ interface scanDoc {
 export function DocumentCard({ card }: {card: scanDoc}) {
   return (
     <div className={classes.card}>
-      <span className={classes.date}>{card.date}</span>
+      <span className={classes.date}>{formatDate(card.date)}</span>
       <a className={classes.link} href={card.url}>{card.source}</a>
       <h1 className={classes.title}>{card.title}</h1>
       <div className={classes.mark}>{card.type}</div>
