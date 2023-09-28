@@ -29,7 +29,6 @@ export function ResultCarousel({ data }: ResultCarouselProps) {
           </div>
           {!isLoading ? (
             <AliceCarousel
-              infinite
               paddingLeft={147}
               ref={carouselRef}
               mouseTracking

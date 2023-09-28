@@ -21,9 +21,9 @@ export const scanDocSlice = createSlice({
 
         action.payload.forEach((item) => {
           if (!item.fail) {
-            let type = "null"
+            let type = ""
 
-            if (item.ok.attributes.isTechNews) type = "tech"
+            if (item.ok.attributes.isTechNews) type = "Технические новости"
             if (item.ok.attributes.isDigest) type = "isDigest"
             if (item.ok.attributes.isAnnouncement) type = "isAnnouncement"
             if (item.ok.attributes.isSpeechRecognition) type = "isSpeechRecognition"

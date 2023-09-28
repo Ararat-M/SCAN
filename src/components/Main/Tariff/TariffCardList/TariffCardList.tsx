@@ -2,6 +2,7 @@ import { type ReactNode } from "react";
 import classes from "./tariffCardList.module.scss";
 import checkMark from "shared/assets/images/check-mark.jpg"
 import { Button, ButtonTheme } from "shared/ui/Button";
+import { classNames } from "shared/lib/classNames";
 
 export interface TariffCard {
   title: string;
@@ -21,11 +22,16 @@ interface TariffCardListProps {
 }
 
 export function TariffCardList({ items }: TariffCardListProps) {
+  
   return (
     <ul className={classes["card-list"]}>
       {items.map((item) => {
+        const modsCls = {
+          [classes.active]: item.isActive || ""
+        }
+
         return (
-          <li className={classes.card}>
+          <li className={classNames(classes.card, [], modsCls)}>
             <div 
               className={classes["card-header"]} 
               style={{

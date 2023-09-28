@@ -9,7 +9,6 @@ function makeBtnActive(isActive: boolean) {
   return ({[classes.active]: isActive})
 }
 
-
 export function Auth() {
   const [isRegister, setIsRegister] = useState(false);
 

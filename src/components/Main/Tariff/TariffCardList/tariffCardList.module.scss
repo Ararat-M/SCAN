@@ -24,11 +24,11 @@
 .card-header {
   height: 132px;
   margin-bottom: 33px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-left: none;
   border-right: none;
   border-bottom: none;
-  border-radius: 10px;
+  border-radius: 7px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   padding-top: 30px;
@@ -114,6 +114,9 @@
   font-size: 20px;
 }
 
+.active {
+  border: 2px solid var(--secondary-orange);
+}
 
 @media screen and (max-width: 1439px) {
   .card-list {

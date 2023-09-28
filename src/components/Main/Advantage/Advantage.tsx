@@ -52,9 +52,6 @@ export function Advantage() {
             0: {
               items: 1
             },
-            920: {
-              items: 2
-            },
             1440: {
               items: 3
             }
