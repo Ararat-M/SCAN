@@ -36,7 +36,6 @@ export function DocumentList() {
     if (endIndex < postsIdData.postsId.length) {
       setEndIndex(endIndex + 10);
     }
-    console.log("click");
     
   }
 

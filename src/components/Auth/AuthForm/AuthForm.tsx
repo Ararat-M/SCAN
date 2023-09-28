@@ -1,27 +1,35 @@
 import { Input } from "shared/ui/Input";
 import classes from "./authForm.module.scss";
 import { Button, ButtonTheme } from "shared/ui/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IconFacebook, IconGoogle, IconYandex } from "shared/assets/svg"
 import { useInput } from "shared/hooks/useInput";
 import { useAppDispatch } from "shared/hooks/useAppDispatch";
 import { useSelector } from "react-redux";
 import { getAuthData } from "features/Auth/selectors/getAuthData";
 import { login } from "features/Auth/services/login";
+import { useCallback, useEffect } from "react";
 
 export function AuthForm() {
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch();
+  const { isLoading, isAuth } = useSelector(getAuthData);
+
   const [loginInput] = useInput("", { required: true, correctPhoneNumber: true})
   const [passwordInput] = useInput("", { required: true, minLength: 6})
 
-  const dispatch = useAppDispatch();
-  const { isLoading } = useSelector(getAuthData);
+  useEffect(()=> {
+    if (isAuth) {
+      navigate("/search");
+    }
+  }, [isAuth])
 
-  function buttonHandler() {
+  const buttonHandler = useCallback(() => {
     dispatch(login({
       login: loginInput.value,
       password: passwordInput.value
     }));
-  }
+  }, [dispatch, loginInput, passwordInput])
 
   return (
     <form className={classes.form}>

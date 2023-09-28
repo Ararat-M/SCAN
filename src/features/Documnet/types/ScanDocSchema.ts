@@ -7,6 +7,7 @@ export interface ScanDoc{
   img: string;
   description: string;
   wordCount: number;
+  id?: string;
 }
 
 export interface ScanDocSchema {

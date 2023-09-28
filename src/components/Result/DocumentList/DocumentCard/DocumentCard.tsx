@@ -3,6 +3,7 @@ import classes from "./documentCard.module.scss";
 import { formatDate } from "shared/lib/formatDate/formatDate";
 import { useEffect, useRef, useState } from "react";
 import noImg from "shared/assets/images/no-image.png"
+import { load } from "cheerio";
 
 interface scanDoc {
   date: string;
@@ -21,19 +22,35 @@ export function DocumentCard({ card }: {card: scanDoc}) {
   
   useEffect(() => {
     const xmlDoc = new DOMParser().parseFromString(card.description, "text/xml");
+    console.log(xmlDoc);
+    
     const scandoc = xmlDoc.querySelector("scandoc");
     const html = scandoc?.textContent;
-
+    
     if (html != null) {
-      // Регулярное выражение для поиска src первого тега img
-      const imgSrcRegex = /<img[^>]*src=["']([^"']+)["']/i;
-      const match = html.match(imgSrcRegex);
-  
-      if (match && match.length >= 2) {
-        const src = match[1];
+      // Загрузка HTML с помощью Cheerio
+      const $ = load(html);
+
+      // Найти все теги img
+      const imgTags = $("img");
+
+      // Получить последний тег img и значение его атрибута src
+      const lastImgTag = imgTags.last();
+      const src = lastImgTag.attr("src");
+
+      if (src) {
         setImgSrc(src);
       } else {
-        setImgSrc(noImg);
+        // поиск src первого тега img c помощью regex
+        const imgSrcRegex = /<img[^>]*src=["']([^"']+)["']/i;
+        const match = html.match(imgSrcRegex);
+
+        if (match) {
+          const src = match[1];
+          setImgSrc(src);
+        } else {
+          setImgSrc(noImg);
+        }
       }
 
       // Регулярное выражение для удаления всех тегов img, table и figure
@@ -45,14 +62,18 @@ export function DocumentCard({ card }: {card: scanDoc}) {
         descRef.current.innerHTML = clearHtml;
       }
     }
-
   }, [])
 
   return (
     <div className={classes.card}>
-      <div>
+      <div className={classes.meta}>
         <span className={classes.date}>{formatDate(card.date)}</span>
-        <a className={classes.link} href={card.url}>{card.source}</a>
+        {card.url ? (
+          <a className={classes.link} href={card.url}>{card.source}</a>
+        ) : (
+          <span>{card.source}</span>
+        )
+        }
       </div>
       <h1 className={classes.title}>{card.title}</h1>
       {card.type && <div className={classes.mark}>{card.type}</div>}

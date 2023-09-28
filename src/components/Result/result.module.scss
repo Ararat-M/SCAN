@@ -10,3 +10,18 @@
 .documents {
   margin-bottom: 109px;
 }
+
+@media screen and (max-width: 1439px) {
+  .hero {
+    margin-top: 20px;
+    margin-bottom: 60px;
+  }
+  
+  .summary {
+    margin-bottom: 57px;
+  }
+  
+  .documents {
+    margin-bottom: 57px;
+  }
+}

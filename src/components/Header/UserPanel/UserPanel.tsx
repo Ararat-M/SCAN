@@ -2,9 +2,8 @@ import classes from "./userPanel.module.scss";
 import { useAppSelector } from "shared/hooks/useAppSelector";
 import { getUserInfo } from "features/UserInfo";
 import { useAppDispatch } from "shared/hooks/useAppDispatch";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { initInfo } from "features/UserInfo/services/initInfo";
-import { getAccesToken } from "features/Auth";
 import { Button, ButtonTheme } from "shared/ui/Button";
 import Avatar from "shared/assets/images/avatar.png"
 import { authActions } from "features/Auth/slice/authSlice";
@@ -17,9 +16,9 @@ export function UserPanel() {
     dispatch(initInfo())
   }, [])
 
-  function logoutHandler() {
+  const logoutHandler = useCallback(() =>  {
     dispatch(authActions.logout())
-  }
+  }, [dispatch])
 
   return (
     <div>

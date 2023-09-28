@@ -21,3 +21,23 @@
   font-weight: 500;
   font-size: 22px;
 }
+
+@media screen and (max-width: 1439px) {
+  .title {
+    margin-bottom: 34px;
+    font-size: 28px;
+  }
+  
+  .list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    row-gap: 20px;
+  }
+  
+  .btn {
+    display: block;
+    margin-top: 36px;
+    padding: 18px 77px;
+  }
+}

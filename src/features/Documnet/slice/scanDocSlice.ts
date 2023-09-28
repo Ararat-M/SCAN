@@ -36,7 +36,8 @@ export const scanDocSlice = createSlice({
               type: type,
               img: "",
               description: item.ok.content.markup,
-              wordCount: item.ok.attributes.wordCount
+              wordCount: item.ok.attributes.wordCount,
+              id: item.ok.id
             })
           };
         })

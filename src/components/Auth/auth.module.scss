@@ -19,6 +19,7 @@
 }
 
 .form-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-self: start;
@@ -30,6 +31,14 @@
   box-shadow: 0px 0px 5px 2px rgb(0 0 0 / 20%);
   border-radius: 10px;
   font-size: 16px;
+}
+
+.icon-lock {
+  position: absolute;
+  width: 75px;
+  height: 92px;
+  top: -55px;
+  left: -51px;
 }
 
 .btn-panel {
@@ -61,7 +70,7 @@
 
   .title {
     font-size: 22px;
-    margin-bottom: 45px;
+    margin-bottom: 126px;
   }
 
   .bg {
@@ -83,6 +92,13 @@
     box-shadow: 0px 0px 5px 2px rgb(0 0 0 / 20%);
     border-radius: 10px;
     font-size: 14px;
+  }
+
+  .icon-lock {
+    width: 75px;
+    height: 92px;
+    top: -81px;
+    left: 81px;
   }
 
   .btn-panel {

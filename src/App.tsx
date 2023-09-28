@@ -4,11 +4,10 @@ import { Header } from "components/Header";
 import { Main } from "components/Main";
 import { Result } from "components/Result";
 import { Search } from "components/Search";
-import { getAuthData, init } from "features/Auth";
-import { Suspense, useEffect } from "react";
+import { init } from "features/Auth";
+import { Suspense, useEffect, useState } from "react";
 import { Routes, Route } from "react-router";
 import { useAppDispatch } from "shared/hooks/useAppDispatch";
-import { useAppSelector } from "shared/hooks/useAppSelector";
 
 export function App() {
   const dispatch = useAppDispatch();

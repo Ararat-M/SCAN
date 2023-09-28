@@ -6,6 +6,8 @@ import { AuthPanel } from "./AuthPanel";
 import { useAppSelector } from "shared/hooks/useAppSelector";
 import { getAuthData } from "features/Auth";
 import { UserPanel } from "./UserPanel";
+import { BurgerMenu } from "components/BurgerMenu";
+import { Link } from "react-router-dom";
 
 export function Header() {
   const { isAuth } = useAppSelector(getAuthData)
@@ -13,16 +15,26 @@ export function Header() {
   return (
     <header className={classes.header}>
       <div className={classNames(classes.content, ["container"])}>
-        <img className={classes.logo} src={logo} alt="logo" />
+        <Link to={"/"}>
+          <img className={classes.logo} src={logo} alt="logo" />
+        </Link>
+        
         <div className={classes.nav}>
           <Navigation />
         </div>
-        <div className={classes.panel}>
-          {isAuth ? (
+
+        {isAuth ? (
+          <div className={classNames(classes["panel-user"], [classes.panel])}>
             <UserPanel />
-          ) : (
+          </div>  
+        ) : (
+          <div className={classNames(classes["panel-auth"], [classes.panel])}>
             <AuthPanel />
-          )}
+          </div>  
+        )}
+        
+        <div className={classes.burger}>
+          <BurgerMenu/>
         </div>
       </div>
     </header>

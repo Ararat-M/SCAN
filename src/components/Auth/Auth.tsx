@@ -4,6 +4,7 @@ import classes from "./auth.module.scss";
 import { AuthBg } from "shared/assets/svg/AuthBg"
 import { classNames } from "shared/lib/classNames";
 import { useState } from "react";
+import { IconLock } from "shared/assets/svg";
 
 function makeBtnActive(isActive: boolean) {
   return ({[classes.active]: isActive})
@@ -21,6 +22,10 @@ export function Auth() {
       <AuthBg className={classes.bg}/>
       
       <div className={classes["form-container"]}>
+        <div className={classes["icon-lock"]}>
+          <IconLock />
+        </div>
+
         <div className={classes["btn-panel"]}>
           <Button 
             className={classNames(classes.btn, [], {...makeBtnActive(!isRegister)})} 
@@ -29,6 +34,7 @@ export function Auth() {
           >
             Войти
           </Button>
+          
           <Button
             className={classNames(classes.btn, [],  {...makeBtnActive(isRegister)})}
             theme={ButtonTheme.CLEAR}

@@ -9,8 +9,7 @@
   font-size: 16px;
 }
 
-.date,
-.link {
+.meta {
   color: #949494;
 }
 
@@ -26,14 +25,13 @@
   height: 93px;
   overflow: hidden;
   margin-top: 24px;
-  margin-bottom: 14px;
   font-size: 26px;
   font-weight: 500;
 }
 
 .mark {
   width: fit-content;
-  margin-bottom: 14px;
+  margin: 20px 0px 0px;
   padding: 4px 14px;
   background-color: #FFB64F;
   border-radius: 5px;
@@ -41,17 +39,18 @@
 }
 
 .img {
+  margin-top: 14px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 158px;
   margin-bottom: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .description {
   flex: 1 0 auto;
-  max-height: 220px;
+  max-height: 225px;
   overflow: hidden;
   margin-bottom: 32px;
   opacity: 0.5;
@@ -70,4 +69,43 @@
 .counter {
   align-self: flex-end;
   color: #949494;
+}
+
+@media screen and (max-width: 1439px) {
+  .card {
+    padding: 19px 14px 18px 28px;
+    font-size: 14px;
+  }
+  
+  .date {
+    margin-right: 9px;
+  }
+  
+  .title {
+    height: 70px;
+    margin-top: 21px;
+    font-size: 19px;
+  }
+  
+  .mark {
+    margin: 20px 0px 0px;
+    padding: 4px 12px;
+    font-size: 10px;
+  }
+
+  .img {
+    margin-top: 13px;
+  }
+  
+  .description {
+    flex: 1 0 auto;
+    max-height: 255px;
+    margin-bottom: 25px;
+    font-size: 12px;
+  }
+  
+  .btn {
+    padding: 14px 29px;
+    background-color: #7CE3E1;
+  }
 }

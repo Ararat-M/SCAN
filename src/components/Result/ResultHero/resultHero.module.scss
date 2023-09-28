@@ -17,3 +17,24 @@
   width: 552px;
   height: 369px;
 }
+
+@media screen and (max-width: 1439px) {
+  .hero {
+    flex-direction: column;
+  }
+  
+  .title {
+    margin-bottom: 21px;
+    font-size: 28px;
+  }
+  
+  .description {
+    font-size: 18px;
+    margin-bottom: 21px;
+  }
+  
+  .bg {
+    width: 350px;
+    height: 234px;
+  }
+}

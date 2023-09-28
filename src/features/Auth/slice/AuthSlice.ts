@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { AuthSchema } from "../types/AuthSchema";
 import { login } from "../services/login";
 import { init } from "../services/init";
+import { useNavigate } from "react-router";
 
 const initialState: AuthSchema = {
   accessToken: JSON.parse(localStorage.getItem("token")!) || "",
@@ -30,9 +31,9 @@ export const authSlice = createSlice({
         state.error = undefined;
       })
       .addCase(init.fulfilled, (state) => {
-        state.isAuth = true,
-        state.isLoading = false,
-        state.error= undefined
+        state.isAuth = true;
+        state.isLoading = false;
+        state.error= undefined;
       })
       .addCase(init.rejected, (state, action) => {
         state.isAuth = false;

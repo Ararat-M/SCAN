@@ -8,7 +8,7 @@
 .summary-container {
   position: relative;
   max-width: 1260px;
-  min-height: 162px;
+  height: 162px;
   display: flex;
   border: 2px solid #029491;
   border-radius: 10px;
@@ -21,6 +21,7 @@
   flex-direction: column;
   row-gap: 26px;
   padding: 17px 27px;
+  left: -1px;
   background-color: #029491;
   color: white;
   font-size: 20px;
@@ -45,4 +46,57 @@
   width: fit-content;
   margin: auto;
   color: red;
+}
+
+@media screen and (max-width: 1439px)  {
+  .carousel {
+    grid-template-columns: 39px 298px 39px;
+    transform: translateX(-16px);
+    justify-content: space-between;
+  }
+  
+  .summary-container {
+    position: relative;
+    display: flex;
+    width: 297px;
+    min-height: 140px;
+    max-height: 140px;
+    border: 2px solid #029491;
+    border-radius: 10px;
+  }
+  
+  .summary-legend {
+    flex-direction: row;
+    row-gap: 0;
+    padding: 23px 16px;
+    font-size: 18px;
+    font-weight: 500;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 0px;
+  }
+
+  .summary-legend-period {
+    margin-right: 59px;
+  }
+
+  .summary-legend-total {
+    margin-right: 30px;
+  }
+  
+  .summary-item {
+    flex-direction: row;
+    row-gap: 0px;
+    column-gap: 68px;
+    border-right: none;
+    margin-top: 93px;
+    margin-bottom: 28px;
+    font-size: 16px;
+  }
+  
+  .loader {
+    width: fit-content;
+    margin: 90px auto;
+    color: red;
+  }
 }

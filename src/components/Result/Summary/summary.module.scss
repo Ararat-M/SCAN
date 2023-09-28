@@ -10,3 +10,15 @@
   font-size: 18px;
   margin-bottom: 27px;
 }
+
+@media screen and (max-width: 1439px)  {
+  .title {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .counter {
+    font-size: 18px;
+    margin-bottom: 34px;
+  }
+}
