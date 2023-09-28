@@ -5,5 +5,6 @@ export { IconGoogle } from "./IconGoogle";
 export { IconYandex } from "./IconYandex";
 export { IconFacebook } from "./IconFacebook";
 export { IconDocuments } from "./IconDocuments";
+export { IconPaper } from "./IconPaper";
 export { SearchBg } from "./SearchBg";
 export { AuthBg } from "./AuthBg";

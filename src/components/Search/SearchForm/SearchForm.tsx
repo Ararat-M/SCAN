@@ -11,8 +11,12 @@ import { useAppDispatch } from "shared/hooks/useAppDispatch";
 import { Tonality } from "enteties/Filter";
 import { filterActions } from "enteties/Filter/slice/filterSlice";
 import { useNavigate } from "react-router";
+import { useMediaQuery } from "react-responsive";
+
 
 export function SearchForm() {
+  const isMobile = useMediaQuery({ query: '(max-width: 1440px)' })
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   // inputs
@@ -23,12 +27,12 @@ export function SearchForm() {
   const [startDateInput] = useDateInput("2022-01-01", { required: true });
   const [endDateInput] = useDateInput("2023-09-25", { required: true });
   // checkboxes
-  const [maxFullness, setMaxFullness] = useState(false);
-  const [businessСontexts, setBusinessСontexts] = useState(false);
-  const [mainRole, setMainRole] = useState(false);
+  const [maxFullness, setMaxFullness] = useState(true);
+  const [businessСontexts, setBusinessСontexts] = useState(true);
+  const [mainRole, setMainRole] = useState(true);
   const [onlyRiskFactor, setOnlyRiskFactor] = useState(false);
   const [techNews, setTechNews] = useState(false);
-  const [announcements, setAnnouncements] = useState(false);
+  const [announcements, setAnnouncements] = useState(true);
   const [digests, setDigests] = useState(false);
 
   const dateNotCorrect = +startDateInput.date > +endDateInput.date;
@@ -73,6 +77,7 @@ export function SearchForm() {
       <div className={classes["input-field"]}>
         <Label id="inn" text="ИНН компании" required isError={innInput.isError && innInput.wasUsed}>
           <Input
+            fluid={isMobile}
             className={classes.input}
             required
             id="inn"
@@ -99,6 +104,7 @@ export function SearchForm() {
 
         <Label id="quantity" text="Количество документов в выдаче" required isError={quantityInput.isError && quantityInput.wasUsed}>
           <Input
+            fluid={isMobile}
             className={classNames(classes.input, [classes["input-quantity"]])}
             required
             id="quantity"
@@ -120,6 +126,7 @@ export function SearchForm() {
         >
           <div className={classes["input-date-field"]}>
             <Input
+              fluid={isMobile}
               className={classNames(classes.input, [classes["input-date"]])}
               type="date"
               value={startDateInput.value}
@@ -131,6 +138,7 @@ export function SearchForm() {
             />
 
             <Input
+              fluid={isMobile}
               className={classNames(classes.input, [classes["input-date"]])}
               type="date"
               value={endDateInput.value}

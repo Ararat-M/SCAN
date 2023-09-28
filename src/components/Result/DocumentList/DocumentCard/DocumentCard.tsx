@@ -36,13 +36,13 @@ export function DocumentCard({ card }: {card: scanDoc}) {
         setImgSrc(noImg);
       }
 
-      // Регулярное выражение для удаления всех тегов img
-      const imgTagRegex = /<img[^>]*>/gi;
-      const htmlWithoutImg = html.replace(imgTagRegex, '');
+      // Регулярное выражение для удаления всех тегов img, table и figure
+      const combinedRegex = /<img[^>]*>|<table[^>]*>|<figure[^>]*>/gi;
+      const clearHtml = html.replace(combinedRegex, '');
 
       // Вставляем полученную разметку
       if (descRef.current != null ) {
-        descRef.current.innerHTML = htmlWithoutImg;
+        descRef.current.innerHTML = clearHtml;
       }
     }
 
@@ -50,8 +50,10 @@ export function DocumentCard({ card }: {card: scanDoc}) {
 
   return (
     <div className={classes.card}>
-      <span className={classes.date}>{formatDate(card.date)}</span>
-      <a className={classes.link} href={card.url}>{card.source}</a>
+      <div>
+        <span className={classes.date}>{formatDate(card.date)}</span>
+        <a className={classes.link} href={card.url}>{card.source}</a>
+      </div>
       <h1 className={classes.title}>{card.title}</h1>
       {card.type && <div className={classes.mark}>{card.type}</div>}
       <div style={{ backgroundImage: `url(${imgSrc})`}} className={classes.img}></div>

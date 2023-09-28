@@ -2,8 +2,12 @@ import { classNames } from "shared/lib/classNames";
 import { SearchForm } from "./SearchForm";
 import classes from "./search.module.scss";
 import { IconDocuments, SearchBg } from "shared/assets/svg";
+import { useMediaQuery } from "react-responsive";
+import { IconPaper } from "shared/assets/svg";
 
 export function Search() {
+  const isMobile = useMediaQuery({ query: '(max-width: 1440px)' })
+
   return (
     <div className={classNames(classes.search, ["container"])}>
       <div className={classes.head}>
@@ -14,7 +18,7 @@ export function Search() {
       </div>
       
       <div className={classes["documents-icon"]}>
-        <IconDocuments/>
+        {isMobile ? <IconPaper/> : <IconDocuments/>}
       </div>
 
       <div className={classes["form-container"]}>

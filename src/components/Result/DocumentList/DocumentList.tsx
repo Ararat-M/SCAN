@@ -11,7 +11,7 @@ import { getPostsIdData } from "features/ObjectSearch";
 export function DocumentList() {
   const dispatch = useAppDispatch();
   const postsIdData = useAppSelector(getPostsIdData);
-  const { scanDocArr } = useAppSelector(getScanDocData)
+  const scanDocData = useAppSelector(getScanDocData)
 
   const [cardRenderLimit, setCardRenderLimit] = useState(2)
   const [startIndex, setStartIndex] = useState(0)
@@ -36,23 +36,27 @@ export function DocumentList() {
     if (endIndex < postsIdData.postsId.length) {
       setEndIndex(endIndex + 10);
     }
+    console.log("click");
+    
   }
 
   return (
     <div>
       <h1 className={classes.title}>Список документов</h1>
+      
       <ul className={classes.list}>
-        {scanDocArr.map((scanDoc, index) =>{
+        {scanDocData.scanDocArr.map((scanDoc, index) => {
           return (
             index < cardRenderLimit &&
             <li className={classes.item}>
               <DocumentCard card={scanDoc} />
-              </li>
-            )}
+            </li>
           )
-        } 
+        })} 
       </ul>
-      <Button 
+
+      <Button
+        disabled={!(endIndex < postsIdData.postsId.length) || scanDocData.isLoading}
         className={classes.btn}
         theme={ButtonTheme.SECONDARY}
         onClick={btnHandler}

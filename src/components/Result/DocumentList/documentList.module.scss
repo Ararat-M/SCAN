@@ -5,18 +5,11 @@
 }
 
 .list {
-  height: fit-content;
-  justify-content: space-between;
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 38px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  column-gap: 30px;
   row-gap: 20px;
-}
-
-.item {
-  height: auto;
-  flex: 1 0 auto;
-  width: calc(50% - 38px);
 }
 
 .btn {
