@@ -41,11 +41,17 @@ export function DocumentList() {
   return (
     <div>
       <h1 className={classes.title}>Список документов</h1>
-      <div className={classes.list}>
-        {scanDocArr.map((scanDoc, index) => 
-          index < cardRenderLimit && <DocumentCard card={scanDoc} />
-        )}
-      </div>
+      <ul className={classes.list}>
+        {scanDocArr.map((scanDoc, index) =>{
+          return (
+            index < cardRenderLimit &&
+            <li className={classes.item}>
+              <DocumentCard card={scanDoc} />
+              </li>
+            )}
+          )
+        } 
+      </ul>
       <Button 
         className={classes.btn}
         theme={ButtonTheme.SECONDARY}
