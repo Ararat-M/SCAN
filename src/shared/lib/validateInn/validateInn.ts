@@ -12,9 +12,9 @@ export function validateInn(inn: string, error: InnError): boolean {
   } else if (/[^0-9]/.test(inn)) {
     error.code = 2;
     error.message = 'ИНН может состоять только из цифр';
-  } else if (![10, 12].includes(inn.length)) {
+  } else if (![10].includes(inn.length)) {
     error.code = 3;
-    error.message = 'ИНН состоит из 10 или 12 цифр';
+    error.message = 'ИНН состоит из 10 цифр';
   } else {
     const checkDigit = (inn: string, coefficients: number[]): number => {
       let n = 0;

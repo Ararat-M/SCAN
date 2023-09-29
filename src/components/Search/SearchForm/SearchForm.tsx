@@ -82,32 +82,35 @@ export function SearchForm() {
             required
             id="inn"
             type="inn"
+            placeholder="10 цифр"
             value={innInput.value}
             setValue={innInput.setValue}
             wasUsed={innInput.wasUsed}
             setWasUsed={innInput.setWasUsed}
             isError={innInput.isError}
-            errorMsg={innInput.errorMsg} 
+            errorMsg={innInput.errorMsg}
           />
         </Label>
         
         <Label id="tonality" text="Тональность">
-          <select id="tonality"
-            className={classNames(classes.input, [classes["input-select"]])}
-            value={tonalityInput.value}
-            onChange={(e) => tonalityInput.setValue(e.currentTarget.value)}
-          >
-            <option disabled>Выберите тональность</option>
-            <option value="any">Любая</option>
-            <option value="negative">Негативная</option>
-            <option value="positive">Позитивная</option>
-          </select>
+          <div className={classes["custom-select"]}>
+            <select id="tonality"
+              className={classNames(classes.input, [classes["input-select"]])}
+              value={tonalityInput.value}
+              onChange={(e) => tonalityInput.setValue(e.currentTarget.value)}
+            >
+              <option disabled>Выберите тональность</option>
+              <option value="any">Любая</option>
+              <option value="negative">Негативная</option>
+              <option value="positive">Позитивная</option>
+            </select>
+          </div>
         </Label>
 
         <Label id="quantity" text="Количество документов в выдаче" required isError={quantityInput.isError && quantityInput.wasUsed}>
           <Input
             fluid={isMobile}
-            className={classNames(classes.input, [classes["input-quantity"]])}
+            className={classes.input}
             required
             id="quantity"
             type="number"
@@ -121,35 +124,43 @@ export function SearchForm() {
           />
         </Label>
 
-        <Label 
+        <Label
+          id=""
           text="Диапазон поиска"
           required
           isError={(startDateInput.isError && startDateInput.wasUsed) || (endDateInput.isError && endDateInput.wasUsed)}
         >
           <div className={classes["input-date-field"]}>
-            <Input
-              fluid={isMobile}
-              className={classNames(classes.input, [classes["input-date"]])}
-              type="date"
-              value={startDateInput.value}
-              setValue={startDateInput.setValue}
-              wasUsed={startDateInput.wasUsed}
-              setWasUsed={startDateInput.setWasUsed}
-              isError={startDateInput.isError || dateNotCorrect}
-              errorMsg={startDateInput.errorMsg} 
-            />
-
-            <Input
-              fluid={isMobile}
-              className={classNames(classes.input, [classes["input-date"]])}
-              type="date"
-              value={endDateInput.value}
-              setValue={endDateInput.setValue}
-              wasUsed={endDateInput.wasUsed}
-              setWasUsed={endDateInput.setWasUsed}
-              isError={endDateInput.isError || dateNotCorrect}
-              errorMsg={endDateInput.errorMsg} 
-            />
+            <div className={classes["custom-date"]}>
+              <Input
+                fluid={isMobile}
+                className={classNames(classes.input, [classes["input-date"]])}
+                type="text"
+                placeholder="Дата начала"
+                onFocus={(e) => e.currentTarget.type = "date"}
+                value={startDateInput.value}
+                setValue={startDateInput.setValue}
+                wasUsed={startDateInput.wasUsed}
+                setWasUsed={startDateInput.setWasUsed}
+                isError={startDateInput.isError || dateNotCorrect}
+                errorMsg={startDateInput.errorMsg} 
+              />
+            </div>
+            <div className={classes["custom-date"]}>
+              <Input
+                fluid={isMobile}
+                className={classNames(classes.input, [classes["input-date"]])}
+                type="text"
+                placeholder="Дата конца"
+                onFocus={(e) => {e.currentTarget.type = "date"}}
+                value={endDateInput.value}
+                setValue={endDateInput.setValue}
+                wasUsed={endDateInput.wasUsed}
+                setWasUsed={endDateInput.setWasUsed}
+                isError={endDateInput.isError || dateNotCorrect}
+                errorMsg={endDateInput.errorMsg} 
+              />
+            </div>
           
             {dateNotCorrect && <span className={classes["input-date-error"]}>Введите корректные данные</span>}
           </div>

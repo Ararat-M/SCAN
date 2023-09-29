@@ -4,6 +4,8 @@ import checkMark from "shared/assets/images/check-mark.jpg"
 import { Button, ButtonTheme } from "shared/ui/Button";
 import { classNames } from "shared/lib/classNames";
 import { nanoid } from "@reduxjs/toolkit";
+import { useAppSelector } from "shared/hooks/useAppSelector";
+import { getAuthData } from "features/Auth";
 
 export interface TariffCard {
   title: string;
@@ -23,12 +25,13 @@ interface TariffCardListProps {
 }
 
 export function TariffCardList({ items }: TariffCardListProps) {
-  
+  const {isAuth} = useAppSelector(getAuthData);
+
   return (
     <ul className={classes["card-list"]}>
       {items.map((item) => {
         const modsCls = {
-          [classes.active]: item.isActive || ""
+          [classes.active]: item.isActive && isAuth || ""
         }
 
         return (
@@ -76,7 +79,7 @@ export function TariffCardList({ items }: TariffCardListProps) {
               </ul>
             </div>
             
-            {item.isActive 
+            {item.isActive && isAuth
               ? (
                 <div className={classes["card-footer"]}>
                   <Button theme={ButtonTheme.BASIC} className={classes["card-btn"]}>

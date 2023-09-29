@@ -9,6 +9,7 @@ import { Suspense, useEffect } from "react";
 import { Routes, Route } from "react-router";
 import { useAppDispatch } from "shared/hooks/useAppDispatch";
 import { useAppSelector } from "shared/hooks/useAppSelector";
+import { AuthGuard } from "shared/lib/AuthGuard/AuthGuard";
 
 export function App() {
   const dispatch = useAppDispatch();
@@ -30,13 +31,17 @@ export function App() {
               <Route
                 path="/search"
                 element={
-                  <Search/>
+                  <AuthGuard redirectTo="/auth">
+                    <Search/>
+                  </AuthGuard>
                 }
               />
               <Route
                 path="/result"
                 element={
-                  <Result/>
+                  <AuthGuard redirectTo="/auth">
+                    <Result/>
+                  </AuthGuard>
                 }
               />
           </Routes>

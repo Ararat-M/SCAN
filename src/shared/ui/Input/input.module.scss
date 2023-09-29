@@ -20,6 +20,12 @@
 .error {
   border: 1px solid rgb(255 89 89);
   box-shadow: 0 0 20px 0 rgb(255 89 89 / 20%);
+  color: rgb(255 89 89);
+  
+  &::placeholder {
+    color: rgb(255 89 89);
+    opacity: 1;
+  }
 }
 
 .error-msg {
