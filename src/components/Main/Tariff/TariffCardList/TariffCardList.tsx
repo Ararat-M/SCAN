@@ -3,6 +3,7 @@ import classes from "./tariffCardList.module.scss";
 import checkMark from "shared/assets/images/check-mark.jpg"
 import { Button, ButtonTheme } from "shared/ui/Button";
 import { classNames } from "shared/lib/classNames";
+import { nanoid } from "@reduxjs/toolkit";
 
 export interface TariffCard {
   title: string;
@@ -31,7 +32,7 @@ export function TariffCardList({ items }: TariffCardListProps) {
         }
 
         return (
-          <li className={classNames(classes.card, [], modsCls)}>
+          <li key={nanoid()} className={classNames(classes.card, [], modsCls)}>
             <div 
               className={classes["card-header"]} 
               style={{

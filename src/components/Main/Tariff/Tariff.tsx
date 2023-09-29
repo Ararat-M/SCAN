@@ -1,6 +1,7 @@
 import { TariffCardList, type TariffCard } from "./TariffCardList";
 import classes from "./tariff.module.scss";
 import { IconLamp, IconLaptop, IconTarger } from "shared/assets/svg";
+
 const cardList: TariffCard[] =  [
   {
     title: "Beginner",

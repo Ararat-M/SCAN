@@ -35,8 +35,8 @@ export function IconDocuments({...props}: SVGProps<SVGSVGElement>) {
       <path d="M384.875 37.0845C382.637 38.1769 380.338 39.1395 377.99 39.9676C375.657 40.9275 373.269 41.7466 370.838 42.4205C373.086 41.3164 375.4 40.3507 377.766 39.5287C380.084 38.5712 382.458 37.7549 384.875 37.0845Z" fill="#263238"/>
       </g>
       <defs>
-      <filter id="filter0_d_21101_2" x="0" y="0" width="405.608" height="119.118" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <filter id="filter0_d_21101_2" x="0" y="0" width="405.608" height="119.118" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+      <feFlood floodOpacity="0" result="BackgroundImageFix"/>
       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
       <feOffset dy="4"/>
       <feGaussianBlur stdDeviation="2"/>

@@ -3,14 +3,21 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { userSlice } from "enteties/User";
 import { UserSchema } from "enteties/User";
 import { API_URL } from "shared/const";
-import { headers } from "api";
 
-export const init = createAsyncThunk<UserSchema, void, { rejectValue: string }>(
+interface RequestData {
+  accessToken: string;
+}
+
+export const init = createAsyncThunk<UserSchema, RequestData, { rejectValue: string }>(
   "auth/init",
   async (requestData, thunkAPI) => {
     try {  
       const response = await axios<UserSchema>(API_URL + "/account/balance", {
-        headers
+        headers: {
+          "Content-type": "application/json",
+          "Accept": "application/json",
+          "Authorization": `bearer ${requestData.accessToken}`
+        }
       });
 
       if (response.data == null) {

@@ -6,12 +6,14 @@ import { useEffect, useState } from "react";
 import { getScanDoc, getScanDocData } from "features/Documnet";
 import { useAppSelector } from "shared/hooks/useAppSelector";
 import { getPostsIdData } from "features/ObjectSearch";
+import { getAccesToken } from "features/Auth";
 
 
 export function DocumentList() {
   const dispatch = useAppDispatch();
   const postsIdData = useAppSelector(getPostsIdData);
   const scanDocData = useAppSelector(getScanDocData)
+  const accessToken = useAppSelector(getAccesToken);
 
   const [cardRenderLimit, setCardRenderLimit] = useState(2)
   const [startIndex, setStartIndex] = useState(0)
@@ -25,7 +27,7 @@ export function DocumentList() {
         dataPart.push(postsIdData.postsId[i])
       }
       
-      dispatch(getScanDoc({ids: dataPart}));
+      dispatch(getScanDoc({ids: dataPart, accessToken}));
     }
   }, [endIndex, postsIdData]);
 
@@ -47,7 +49,7 @@ export function DocumentList() {
         {scanDocData.scanDocArr.map((scanDoc, index) => {
           return (
             index < cardRenderLimit &&
-            <li className={classes.item}>
+            <li key={scanDoc.id} className={classes.item}>
               <DocumentCard card={scanDoc} />
             </li>
           )

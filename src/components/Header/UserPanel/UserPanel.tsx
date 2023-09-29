@@ -7,13 +7,15 @@ import { initInfo } from "features/UserInfo/services/initInfo";
 import { Button, ButtonTheme } from "shared/ui/Button";
 import Avatar from "shared/assets/images/avatar.png"
 import { authActions } from "features/Auth/slice/authSlice";
+import { getAccesToken } from "features/Auth";
 
 export function UserPanel() {
   const dispatch = useAppDispatch();
   const userInfo = useAppSelector(getUserInfo);
+  const accessToken = useAppSelector(getAccesToken);
 
   useEffect(() => {
-    dispatch(initInfo())
+    dispatch(initInfo({accessToken}))
   }, [])
 
   const logoutHandler = useCallback(() =>  {

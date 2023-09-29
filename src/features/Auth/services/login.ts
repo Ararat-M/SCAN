@@ -1,7 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { API_URL } from "shared/const";
-import { headers } from "api";
 
 interface AuthData {
   login: string;
@@ -20,7 +19,12 @@ export const login = createAsyncThunk<AuthResponse, AuthData, { rejectValue: str
       const response = await axios.post<AuthResponse>(API_URL + "/account/login", {
         login: requestData.login, 
         password: requestData.password
-      }, {headers});
+      }, 
+      {
+        headers: {
+        "Content-type": "application/json",
+        "Accept": "application/json"
+      }});
       
       if (response.data == null) {
         throw new Error();

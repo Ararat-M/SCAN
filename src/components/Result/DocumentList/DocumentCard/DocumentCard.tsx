@@ -22,7 +22,6 @@ export function DocumentCard({ card }: {card: scanDoc}) {
   
   useEffect(() => {
     const xmlDoc = new DOMParser().parseFromString(card.description, "text/xml");
-    console.log(xmlDoc);
     
     const scandoc = xmlDoc.querySelector("scandoc");
     const html = scandoc?.textContent;
@@ -72,15 +71,20 @@ export function DocumentCard({ card }: {card: scanDoc}) {
           <a className={classes.link} href={card.url}>{card.source}</a>
         ) : (
           <span>{card.source}</span>
-        )
-        }
+        )}
       </div>
       <h1 className={classes.title}>{card.title}</h1>
       {card.type && <div className={classes.mark}>{card.type}</div>}
       <div style={{ backgroundImage: `url(${imgSrc})`}} className={classes.img}></div>
       <div ref={descRef} className={classes.description}></div>
       <div className={classes.footer}>
-        <Button className={classes.btn} theme={ButtonTheme.BASIC}>Читать в источнике</Button>
+        <Button className={classes.btn} theme={ButtonTheme.BASIC}>
+          {card.url ? (
+            <a href={card.url}>Читать в источнике</a>
+          ) : (
+            "Читать в источнике"
+          )}
+        </Button>
         <span className={classes.counter}>{card.wordCount} слов</span>
       </div>
     </div>

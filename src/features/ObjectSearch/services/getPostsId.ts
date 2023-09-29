@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_URL } from "shared/const";
-import { headers } from "api";
 import { FilterSchema } from "enteties/Filter";
 
 interface ResponseData {
@@ -16,7 +15,11 @@ interface ResponseData {
   }]
 }
 
-export const getPostsId = createAsyncThunk<ResponseData, FilterSchema, { rejectValue: string} >(
+interface RequestData extends FilterSchema {
+  accessToken: string;
+}
+
+export const getPostsId = createAsyncThunk<ResponseData, RequestData, { rejectValue: string} >(
   "histogram/posts",
   async (requestData, thunAPI) => {
     try {
@@ -30,7 +33,14 @@ export const getPostsId = createAsyncThunk<ResponseData, FilterSchema, { rejectV
         sortType: requestData.sortType,
         sortDirectionType: requestData.sortDirectionType,
         attributeFilters: requestData.attributeFilters
-      }, {headers});
+      }, 
+      {
+        headers: {
+          "Content-type": "application/json",
+          "Accept": "application/json",
+          "Authorization": `bearer ${requestData.accessToken}`
+        }
+      });
 
       if (response.data == null) {
         throw new Error();
