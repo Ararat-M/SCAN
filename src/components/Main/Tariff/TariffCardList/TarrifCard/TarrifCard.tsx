@@ -44,7 +44,7 @@ export function TarrifCard({ card }: { card: ITariffCard }) {
         </div>
       </div>
 
-      {card.isActive && <div className={classes["active-pin"]}>Текущий тариф</div>}
+      {card.isActive && isAuth && <div className={classes["active-pin"]}>Текущий тариф</div>}
 
       <div className={classes["price-info"]}>
         <div className={classes.price}>

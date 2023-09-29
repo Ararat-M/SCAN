@@ -28,7 +28,7 @@ export function SummaryCarousel({ data }: SummaryCarouselProps) {
         </div>
         {!isLoading ? (
           <Carousel
-            className={classes.root}
+            className={classes["carousel-stage"]}
             renderCenterLeftControls={({ previousSlide }) =>
               <Button theme={ButtonTheme.CLEAR} onClick={previousSlide}>
                 <img src={arrowLeft} alt="left" />

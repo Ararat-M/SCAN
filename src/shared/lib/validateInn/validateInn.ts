@@ -19,7 +19,7 @@ export function validateInn(inn: string, error: InnError): boolean {
     const checkDigit = (inn: string, coefficients: number[]): number => {
       let n = 0;
 
-      for (const i of coefficients) {
+      for (const i in coefficients) {
         n += coefficients[i] * parseInt(inn[i]);
       }
 

@@ -6,7 +6,7 @@ import { formatDate } from "shared/lib/formatDate/formatDate";
 const initialState: HistogramSchema = {
   data: [],
   amount: 0,
-  isLoading: true,
+  isLoading: false,
   error: ""
 };
 
@@ -17,6 +17,7 @@ export const histogramSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getHistogram.pending, (state) => {
+        state.amount = 0;
         state.data = initialState.data;
         state.isLoading = true;
       })

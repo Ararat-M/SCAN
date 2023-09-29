@@ -4,7 +4,7 @@ import { getScanDoc } from "../services/getScanDoc";
 
 const initialState: ScanDocSchema = {
   scanDocArr: [],
-  isLoading: true,
+  isLoading: false,
   error: ""
 };
 
@@ -13,13 +13,16 @@ export const scanDocSlice = createSlice({
   initialState,
   reducers: {
     clear(state) {
-      state.scanDocArr = [];
+      state.scanDocArr = initialState.scanDocArr;
+      state.isLoading = initialState.isLoading;
+      state.error = initialState.error;
     }
   },
   extraReducers: (builder) => {
     builder
       .addCase(getScanDoc.pending, (state) => {
         state.isLoading = true;
+        state.error = initialState.error;
       })
       .addCase(getScanDoc.fulfilled, (state, action) => {
         action.payload.forEach((item) => {
@@ -43,7 +46,7 @@ export const scanDocSlice = createSlice({
               id: item.ok.id,
               attributes: item.ok.attributes
             });
-          };
+          }
         });
         state.isLoading = false;
       })

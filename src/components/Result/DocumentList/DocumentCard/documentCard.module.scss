@@ -49,13 +49,25 @@
 }
 
 .description {
+  position: relative;
   white-space: break-word;
   word-wrap: break-word;
   flex: 1 0 auto;
-  max-height: 225px;
+  max-height: 222px;
   overflow: hidden;
   margin-bottom: 32px;
   opacity: 0.5;
+}
+
+.description:after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 30%;
+  width: 100%;
+  background: linear-gradient(transparent, rgb(255, 255, 255));
+  pointer-events: none;
 }
 
 .footer {

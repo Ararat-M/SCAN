@@ -1,4 +1,4 @@
-.root {
+.carousel-stage {
   min-width: 1120px;
   max-width: 1120px;
   margin-left: 140px;
@@ -59,7 +59,7 @@
 }
 
 @media screen and (max-width: 1439px)  {
-  .root {
+  .carousel-stage {
     min-width: 270px;
     max-width: 270px;
     margin-left: 10px;

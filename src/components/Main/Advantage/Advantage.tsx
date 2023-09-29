@@ -9,6 +9,7 @@ import { Button, ButtonTheme } from "shared/ui/Button";
 import AdvantageBG from "shared/assets/images/advantage-bg.jpg";
 import Carousel from "nuka-carousel";
 import { nanoid } from "@reduxjs/toolkit";
+import { useMediaQuery } from "react-responsive";
 
 const cardList = [
   // eslint-disable-next-line react/jsx-key
@@ -44,22 +45,25 @@ const cardList = [
 ];
 
 export function Advantage() {
+  const isMobile = useMediaQuery({ query: "(max-width: 1439px)" });
+
   return (
     <div className={classes.advantage}style={{ backgroundImage: `url(${AdvantageBG})` }}>
       <h2 className={classes.title}>почему именно мы</h2>
 
       <Carousel
+        className={classes["carousel-stage"]}
         renderCenterLeftControls={({ previousSlide }) =>
           <Button theme={ButtonTheme.CLEAR} onClick={previousSlide}>
             <img src={arrowLeft} alt="left" />
           </Button>
         }
         renderCenterRightControls={({ nextSlide }) =>
-          <Button className={classes["test-btn"]} theme={ButtonTheme.CLEAR} onClick={nextSlide}>
+          <Button theme={ButtonTheme.CLEAR} onClick={nextSlide}>
             <img src={arrowRight} alt="right" />
           </Button>
         }
-        slidesToShow={3}
+        slidesToShow={isMobile ? 1 : 3}
         defaultControlsConfig={{
           pagingDotsStyle: { display: "none" },
           nextButtonStyle: { display: "none" },

@@ -4,14 +4,20 @@ import { type PostsIdSchema } from "../types/PostsIdSchema";
 
 const initialState: PostsIdSchema = {
   postsId: [],
-  isLoading: true,
+  isLoading: false,
   error: ""
 };
 
 export const postsIdSlice = createSlice({
   name: "postsId",
   initialState,
-  reducers: { },
+  reducers: {
+    clear(state) {
+      state.postsId = initialState.postsId;
+      state.isLoading = initialState.isLoading;
+      state.error = initialState.error;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getPostsId.pending, (state) => {

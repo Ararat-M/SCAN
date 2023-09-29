@@ -19,8 +19,8 @@ export function SearchForm() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   // inputs
-  const [innInput] = useInput("7710137066", { required: true, correctInn: true });
-  const [quantityInput] = useInput("800", { required: true, minValue: 1, maxValue: 1000 });
+  const [innInput] = useInput("", { required: true, correctInn: true });
+  const [quantityInput] = useInput("", { required: true, minValue: 1, maxValue: 1000 });
   const [tonalityInput] = useInput("any");
   // date inputs
   const [startDateInput] = useDateInput("", { required: true });

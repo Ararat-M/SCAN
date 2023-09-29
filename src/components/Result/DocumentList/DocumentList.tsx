@@ -5,44 +5,44 @@ import { useAppDispatch } from "shared/hooks/useAppDispatch";
 import { useEffect, useState } from "react";
 import { getScanDoc, getScanDocData, scanDocActions } from "features/Document";
 import { useAppSelector } from "shared/hooks/useAppSelector";
-import { getPostsIdData } from "features/ObjectSearch";
 import { getAccesToken } from "features/Auth";
 import { Loader } from "shared/ui/Loader/Loader";
+import { postsIdActions } from "features/ObjectSearch/slice/postsIdSlice";
 
-export function DocumentList() {
+export function DocumentList({ ids }: { ids: string[] }) {
+  // компонент не рендериться если массив пуст
+  if (ids.length === 0) return null;
+
   const dispatch = useAppDispatch();
-  const postsIdData = useAppSelector(getPostsIdData);
   const scanDocData = useAppSelector(getScanDocData);
-  const accessToken = useAppSelector(getAccesToken);
-
-  const [cardRenderLimit, setCardRenderLimit] = useState(2);
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(10);
+  const [amountToRender, setAmountToRender] = useState(2);
 
-  useEffect(() => {
-    if (!postsIdData.isLoading) {
-      const dataPart = [];
-
-      for (let i = startIndex; i < endIndex && i < postsIdData.postsId.length; i++) {
-        dataPart.push(postsIdData.postsId[i]);
-      }
-
-      dispatch(getScanDoc({ ids: dataPart, accessToken }));
-    }
-  }, [endIndex, postsIdData.isLoading]);
+  const accessToken = useAppSelector(getAccesToken);
 
   useEffect(() => {
     return () => {
       dispatch(scanDocActions.clear());
+      dispatch(postsIdActions.clear());
     };
   }, []);
 
-  function btnHandler() {
-    setStartIndex(startIndex + 10);
-    setCardRenderLimit(endIndex);
+  useEffect(() => {
+    const partData: string[] = [];
 
-    if (endIndex < postsIdData.postsId.length) {
-      setEndIndex(endIndex + 10);
+    for (let i = startIndex; i < endIndex && i < ids.length; i++) {
+      partData.push(ids[i]);
+    }
+
+    dispatch(getScanDoc({ ids: partData, accessToken }));
+  }, [endIndex]);
+
+  function btnHandler() {
+    if (startIndex < ids.length) {
+      setStartIndex(endIndex);
+      setAmountToRender(endIndex);
+      setEndIndex(prev => prev + 10);
     }
   }
 
@@ -59,22 +59,30 @@ export function DocumentList() {
       <ul className={classes.list}>
         {scanDocData.scanDocArr.map((scanDoc, index) => {
           return (
-            index < cardRenderLimit &&
-            <li key={scanDoc.id} className={classes.item}>
-              <DocumentCard card={scanDoc} />
-            </li>
+            index < amountToRender && (
+              <li key={scanDoc.id} className={classes.item}>
+                <DocumentCard card={scanDoc} />
+              </li>
+            )
           );
-        })};
+        })}
       </ul>
-      {true && (
-        <Button
-          disabled={scanDocData.isLoading}
-          className={classes.btn}
-          theme={ButtonTheme.SECONDARY}
-          onClick={btnHandler}
-        >
-          Показать больше
-        </Button>
+
+      {endIndex < ids.length && (
+        !scanDocData.isLoading ? (
+          <Button
+            disabled={scanDocData.isLoading}
+            className={classes.btn}
+            theme={ButtonTheme.SECONDARY}
+            onClick={btnHandler}
+          >
+            Показать больше
+          </Button>
+        ) : (
+          <div style={{ marginTop: "60px" }}>
+            <Loader />
+          </div>
+        )
       )}
     </div>
   );

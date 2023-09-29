@@ -26,4 +26,15 @@
     font-size: 28px;
     line-height: 33px;
   }
+
+  .carousel-stage {
+    min-width: 298px;
+    max-width: 298px;
+    margin-left: 20px;
+  }
+  
+  .carousel-container {
+    margin-right: -4px;
+    margin-left: -14px;
+  }
 }

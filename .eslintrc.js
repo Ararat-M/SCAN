@@ -29,6 +29,7 @@ module.exports = {
           extensions: [".js", ".jsx", ".tsx"]
       }],
       "array-callback-return": "off",
+      "@typescript-eslint/no-for-in-array": "off",
       "import/no-unresolved": "off",
       "import/prefer-default-export": "off",
       "react/require-default-props": "off",
