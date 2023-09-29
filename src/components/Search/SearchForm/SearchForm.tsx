@@ -20,12 +20,12 @@ export function SearchForm() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   // inputs
-  const [innInput] = useInput("7710137066", { required: true });
-  const [quantityInput] = useInput("700", { required: true, minValue: 1, maxValue: 1000 });
+  const [innInput] = useInput("", { required: true, correctInn: true });
+  const [quantityInput] = useInput("", { required: true, minValue: 1, maxValue: 1000 });
   const [tonalityInput] = useInput("any");
   // date inputs
-  const [startDateInput] = useDateInput("2022-01-01", { required: true });
-  const [endDateInput] = useDateInput("2023-09-25", { required: true });
+  const [startDateInput] = useDateInput("", { required: true });
+  const [endDateInput] = useDateInput("", { required: true });
   // checkboxes
   const [maxFullness, setMaxFullness] = useState(true);
   const [businessСontexts, setBusinessСontexts] = useState(true);
@@ -40,7 +40,7 @@ export function SearchForm() {
 
   function submitHandler(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
+    
     dispatch(filterActions.setFilter({
       issueDateInterval: {
         startDate: startDateInput.value,
@@ -53,7 +53,7 @@ export function SearchForm() {
             inBusinessNews: businessСontexts,
             sparkId: null,
             entityId: null,
-            inn: +innInput.value,
+            inn: +innInput.value.replaceAll(" ", ""),
             maxFullness: maxFullness
           }],
           onlyMainRole: mainRole,
@@ -81,7 +81,7 @@ export function SearchForm() {
             className={classes.input}
             required
             id="inn"
-            type="text"
+            type="inn"
             value={innInput.value}
             setValue={innInput.setValue}
             wasUsed={innInput.wasUsed}
@@ -99,6 +99,8 @@ export function SearchForm() {
           >
             <option disabled>Выберите тональность</option>
             <option value="any">Любая</option>
+            <option value="negative">Негативная</option>
+            <option value="positive">Позитивная</option>
           </select>
         </Label>
 

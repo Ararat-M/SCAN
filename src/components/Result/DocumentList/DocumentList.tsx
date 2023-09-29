@@ -7,6 +7,7 @@ import { getScanDoc, getScanDocData } from "features/Documnet";
 import { useAppSelector } from "shared/hooks/useAppSelector";
 import { getPostsIdData } from "features/ObjectSearch";
 import { getAccesToken } from "features/Auth";
+import { scanDocActions } from "features/Documnet/slice/scanDocSlice";
 
 
 export function DocumentList() {
@@ -14,7 +15,7 @@ export function DocumentList() {
   const postsIdData = useAppSelector(getPostsIdData);
   const scanDocData = useAppSelector(getScanDocData)
   const accessToken = useAppSelector(getAccesToken);
-
+  
   const [cardRenderLimit, setCardRenderLimit] = useState(2)
   const [startIndex, setStartIndex] = useState(0)
   const [endIndex, setEndIndex] = useState(10)
@@ -28,6 +29,11 @@ export function DocumentList() {
       }
       
       dispatch(getScanDoc({ids: dataPart, accessToken}));
+      
+    }
+
+    return ()=> {
+      dispatch(scanDocActions.clear());
     }
   }, [endIndex, postsIdData]);
 

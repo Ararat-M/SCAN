@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ScanDocSchema } from "../types/ScanDocSchema";
-import { ResponceData, getScanDoc } from "../services/getScanDoc";
+import { getScanDoc } from "../services/getScanDoc";
 
 const initialState: ScanDocSchema = {
   scanDocArr: [],
@@ -11,7 +11,11 @@ const initialState: ScanDocSchema = {
 export const scanDocSlice = createSlice({
   name: "ScanDoc",
   initialState,
-  reducers: { },
+  reducers: { 
+    clear(state) {
+      state.scanDocArr = [];
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getScanDoc.pending, (state) => {

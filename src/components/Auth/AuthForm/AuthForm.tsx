@@ -26,7 +26,7 @@ export function AuthForm() {
 
   const buttonHandler = useCallback(() => {
     dispatch(login({
-      login: loginInput.value,
+      login: loginInput.value.replaceAll(" ", ""),
       password: passwordInput.value
     }));
   }, [dispatch, loginInput, passwordInput])

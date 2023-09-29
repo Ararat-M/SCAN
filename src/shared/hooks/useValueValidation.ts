@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { InnError, validateInn } from "shared/lib/validateInn/validateInn";
 
 export interface ValueValidation {
   required?: boolean;
@@ -7,15 +8,23 @@ export interface ValueValidation {
   minValue?: number;
   maxValue?: number;
   correctPhoneNumber?: boolean;
+  correctInn? : boolean;
 }
 
 export function useValueValidation(value: string, validations: ValueValidation) {
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  const valueLength = value.replaceAll(" ", '').length;
+  const valueLength = value.replaceAll(" ", "").length;
+  const valueWithoutSpaces = value.replaceAll(" ", "");
   const correctPhoneNumberRegex = /^[0-9+]+$/;
 
+  const error: InnError = {
+    code: 0, 
+    message: "",
+  };
+
+  const correctInn = validations.correctInn && !validateInn(valueWithoutSpaces, error);
   const requaired = validations.required && !value;
   const minLength = validations.minLength && (valueLength > 0) && (valueLength < validations.minLength);
   const maxLength = validations.maxLength && (valueLength > validations.maxLength);
@@ -56,6 +65,12 @@ export function useValueValidation(value: string, validations: ValueValidation) 
 
     if (correctPhoneNumber) {
       setErrorMsg("Введите корректные данные")
+      setIsError(true)
+      return
+    }
+
+    if (correctInn) {
+      setErrorMsg(error.message)
       setIsError(true)
       return
     }

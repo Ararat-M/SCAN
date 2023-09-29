@@ -2,6 +2,28 @@ import { Dispatch, SetStateAction, type InputHTMLAttributes, useState, useEffect
 import classes from "./input.module.scss";
 import { classNames } from "shared/lib/classNames";
 
+function telMask(value: string) {
+  const valueWithoutSpaces = value.replaceAll(" ", "");
+  
+  const valueWithMask = `${valueWithoutSpaces.substring(0, 2)} ${valueWithoutSpaces.substring(2, 5)} ${valueWithoutSpaces.substring(5, 8)} ${valueWithoutSpaces.substring(8, 10)}${valueWithoutSpaces.substring(10, valueWithoutSpaces.length)}`;
+
+  return valueWithMask.trim();
+}
+
+function innMask(value: string) {
+  const valueWithoutSpaces = value.replaceAll(" ", "");
+
+  if (valueWithoutSpaces.length <= 10) { 
+    const valueWithMask = `${valueWithoutSpaces.substring(0, 4)} ${valueWithoutSpaces.substring(4, 9)} ${valueWithoutSpaces.substring(9, 10)}`;
+  
+    return valueWithMask.trim();
+  } else {
+    const valueWithMask =`${valueWithoutSpaces.substring(0, 4)} ${valueWithoutSpaces.substring(4, 10)} ${valueWithoutSpaces.substring(10, 12)}${valueWithoutSpaces.substring(12, valueWithoutSpaces.length)}`;
+    
+    return valueWithMask.trim();
+  }
+}
+
 type InputType =
         | "date"
         | "datetime-local"
@@ -16,7 +38,8 @@ type InputType =
         | "url"
         | "week"
         | "radio-button"
-        | "login";
+        | "login"
+        | "inn";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   value: string;
@@ -44,13 +67,9 @@ export function Input({
   const mods = {[classes.error]: isError && wasUsed}
 
   useEffect(() => {
-    if (type === "login" && value[0] === "+") {
-      const valueWithoutSpaces = value.replaceAll(" ", '');
+    if (type === "login" && value[0] === "+") setValue(telMask);
   
-      const valueWithMask = `${valueWithoutSpaces.substring(0, 2)} ${valueWithoutSpaces.substring(2, 5)} ${valueWithoutSpaces.substring(5, 8)} ${valueWithoutSpaces.substring(8, 10)} ${valueWithoutSpaces.substring(10, valueWithoutSpaces.length)}`;
-  
-      setValue(valueWithMask.trim())
-    }
+    if (type === "inn") setValue(innMask);
   }, [value, type])
 
   return (
