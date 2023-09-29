@@ -25,7 +25,7 @@ export function SearchForm() {
   const [tonalityInput] = useInput("any");
   // date inputs
   const [startDateInput] = useDateInput("", { required: true });
-  const [endDateInput] = useDateInput("", { required: true });
+  const [endDateInput] = useDateInput("", { required: true, maxDate: new Date() });
   // checkboxes
   const [maxFullness, setMaxFullness] = useState(true);
   const [businessСontexts, setBusinessСontexts] = useState(true);
