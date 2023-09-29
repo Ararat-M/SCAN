@@ -5,6 +5,7 @@ import { formatDate } from "shared/lib/formatDate/formatDate";
 
 const initialState: HistogramSchema = {
   data: [],
+  amount: 0,
   isLoading: true,
   error: ""
 }
@@ -23,6 +24,7 @@ export const histogramSlice = createSlice({
         action.payload.data.forEach((item) => {
           if (item.histogramType === "totalDocuments") {
             item.data.forEach((item) => {
+              state.amount += item.value;
               state.data.push({
                 date: formatDate(item.date),
                 totalValue: item.value,

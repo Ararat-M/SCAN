@@ -15,7 +15,7 @@ import { useMediaQuery } from "react-responsive";
 
 
 export function SearchForm() {
-  const isMobile = useMediaQuery({ query: '(max-width: 1440px)' })
+  const isMobile = useMediaQuery({ query: '(max-width: 1439px)' })
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

@@ -14,12 +14,7 @@ interface ResultCarouselProps extends Pick<HistogramSchema, "data"> {
 }
 
 export function ResultCarousel({ data }: ResultCarouselProps) {
-  const [items] = useState([
-    <div style={{ backgroundColor: 'blue' }}>1</div>,
-    <div style={{ backgroundColor: 'green' }}>2</div>,
-  ]);
-  
-  const [responsive] = useState({
+    const [responsive] = useState({
     0: {
       items: 1
     },
@@ -27,7 +22,7 @@ export function ResultCarousel({ data }: ResultCarouselProps) {
       items: 8
     }
   });
-  const isMobile = useMediaQuery({ query: '(max-width: 1440px)' })
+  const isMobile = useMediaQuery({ query: '(max-width: 1439px)' })
   
   const { isLoading } = useAppSelector(getHistogramData)
   
@@ -44,7 +39,7 @@ export function ResultCarousel({ data }: ResultCarouselProps) {
             <div className={classes["summary-legend-total"]}>Всего</div>
             <div className={classes["summary-legenda-risk"]}>Риски</div>
           </div>
-          {isLoading ? (
+          {!isLoading ? (
             <AliceCarousel
               infinite
               paddingLeft={isMobile ? 10 : 140}

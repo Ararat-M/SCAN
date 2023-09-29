@@ -6,7 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import { IconPaper } from "shared/assets/svg";
 
 export function Search() {
-  const isMobile = useMediaQuery({ query: '(max-width: 1440px)' })
+  const isMobile = useMediaQuery({ query: '(max-width: 1439px)' })
 
   return (
     <div className={classNames(classes.search, ["container"])}>

@@ -4,6 +4,7 @@ export interface HistogramSchema {
     totalValue: number;
     riskValue: number;
   }[];
+  amount: number;
   isLoading: boolean;
   error?: string;
 }

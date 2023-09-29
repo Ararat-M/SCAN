@@ -21,7 +21,7 @@ export function Summary() {
   return (
     <div>
       <h1 className={classes.title}>Общая сводка</h1>
-      <span className={classes.counter}>Найдено count вариантов</span>
+      <span className={classes.counter}>Найдено {data.amount} вариантов</span>
       <ResultCarousel data={data.data}/>
     </div>
   );

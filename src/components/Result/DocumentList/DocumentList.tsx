@@ -29,13 +29,14 @@ export function DocumentList() {
       }
       
       dispatch(getScanDoc({ids: dataPart, accessToken}));
-      
-    }
-
-    return ()=> {
-      dispatch(scanDocActions.clear());
     }
   }, [endIndex, postsIdData]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(scanDocActions.clear());
+    }
+  }, []);
 
   function btnHandler() {
     setStartIndex(startIndex + 10);
@@ -44,7 +45,6 @@ export function DocumentList() {
     if (endIndex < postsIdData.postsId.length) {
       setEndIndex(endIndex + 10);
     }
-    
   }
 
   return (
