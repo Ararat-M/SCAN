@@ -8,6 +8,7 @@ import { Button, ButtonTheme } from "shared/ui/Button";
 import Avatar from "shared/assets/images/avatar.png"
 import { authActions } from "features/Auth/slice/authSlice";
 import { getAccesToken } from "features/Auth";
+import { Loader } from "shared/ui/Loader/Loader";
 
 export function UserPanel() {
   const dispatch = useAppDispatch();
@@ -25,19 +26,20 @@ export function UserPanel() {
   return (
     <div>
       <div className={classes["user-panel"]}>
-        <div className={classes["user-info"]}>
-          {userInfo.isLoading ? (
-            "Loading..."
-          ) : (
-            <>
-              <span className={classes["user-info-used-text"]}>Использовано компаний</span>
-              <span className={classes["user-info-used-count"]}>{userInfo.usedCompanyCount}</span>
+        {userInfo.isLoading ? (
+          <div style={{ display: "flex" }} className={classes["user-info"]}>
+            <Loader />
+          </div>
+        ) : (
+          <div className={classes["user-info"]}>
+            <span className={classes["user-info-used-text"]}>Использовано компаний</span>
+            <span className={classes["user-info-used-count"]}>{userInfo.usedCompanyCount}</span>
 
-              <span className={classes["user-info-limit-text"]}>Лимит по компаниям</span>
-              <span className={classes["user-info-limit-count"]}>{userInfo.companyLimit}</span>
-            </>
-          )}
-        </div>
+            <span className={classes["user-info-limit-text"]}>Лимит по компаниям</span>
+            <span className={classes["user-info-limit-count"]}>{userInfo.companyLimit}</span>
+          </div>
+        )}
+
         <div className={classes["user-avatar"]}>
             <span className={classes["user-avatar-name"]}>Алексей А.</span>
             <Button

@@ -1,15 +1,10 @@
-import { Auth } from "components/Auth";
 import { Footer } from "components/Footer";
 import { Header } from "components/Header";
-import { Main } from "components/Main";
-import { Result } from "components/Result";
-import { Search } from "components/Search";
 import { getAccesToken, init } from "features/Auth";
-import { Suspense, useEffect } from "react";
-import { Routes, Route } from "react-router";
+import { useEffect } from "react";
+import { AppRouter } from "router";
 import { useAppDispatch } from "shared/hooks/useAppDispatch";
 import { useAppSelector } from "shared/hooks/useAppSelector";
-import { AuthGuard } from "shared/lib/AuthGuard/AuthGuard";
 
 export function App() {
   const dispatch = useAppDispatch();
@@ -24,28 +19,7 @@ export function App() {
       <Header />
 
         <div className="content">
-        <Suspense fallback={""}>
-          <Routes>
-              <Route path="/" element={<Main/>}/>
-              <Route path="/auth" element={<Auth/>}/>
-              <Route
-                path="/search"
-                element={
-                  <AuthGuard redirectTo="/auth">
-                    <Search/>
-                  </AuthGuard>
-                }
-              />
-              <Route
-                path="/result"
-                element={
-                  <AuthGuard redirectTo="/auth">
-                    <Result/>
-                  </AuthGuard>
-                }
-              />
-          </Routes>
-        </Suspense>
+        <AppRouter />
         </div>
       
       <Footer />

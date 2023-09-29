@@ -5,6 +5,8 @@
 }
 
 .user-info {
+  min-width: 175px;
+  min-height: 63px;
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
@@ -69,6 +71,8 @@
 
 @media screen and (max-width: 1439px) {
   .user-info {
+    min-width: 132px;
+    min-height: 75px;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto auto;

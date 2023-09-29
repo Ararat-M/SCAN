@@ -7,6 +7,7 @@ import { Button, ButtonTheme } from "shared/ui/Button";
 import { useAppSelector } from "shared/hooks/useAppSelector";
 import { HistogramSchema, getHistogramData } from "features/ObjectSearch";
 import { useMediaQuery } from "react-responsive";
+import { Loader } from "shared/ui/Loader/Loader";
 
 interface ResultCarouselProps extends Pick<HistogramSchema, "data"> {
   
@@ -43,7 +44,7 @@ export function ResultCarousel({ data }: ResultCarouselProps) {
             <div className={classes["summary-legend-total"]}>Всего</div>
             <div className={classes["summary-legenda-risk"]}>Риски</div>
           </div>
-          {!isLoading ? (
+          {isLoading ? (
             <AliceCarousel
               infinite
               paddingLeft={isMobile ? 10 : 140}
@@ -60,7 +61,8 @@ export function ResultCarousel({ data }: ResultCarouselProps) {
             />
           ) : (
             <div className={classes.loader}>
-              Loading....
+              <Loader />
+              <span>Загружаем данные </span>
             </div>
           )}
         </div>

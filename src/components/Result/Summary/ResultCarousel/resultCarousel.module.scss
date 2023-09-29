@@ -45,7 +45,11 @@
 .loader {
   width: fit-content;
   margin: auto;
-  color: red;
+
+  span {
+    display: block;
+    margin-top: 24px;
+  }
 }
 
 @media screen and (max-width: 1439px)  {
@@ -96,7 +100,10 @@
   
   .loader {
     width: fit-content;
-    margin: 90px auto;
-    color: red;
+    margin: 100px auto;
+
+    span {
+      display: none;
+    }
   }
 }
