@@ -78,13 +78,15 @@ export function DocumentCard({ card }: {card: scanDoc}) {
       <div style={{ backgroundImage: `url(${imgSrc})`}} className={classes.img}></div>
       <div ref={descRef} className={classes.description}></div>
       <div className={classes.footer}>
-        <Button className={classes.btn} theme={ButtonTheme.BASIC}>
           {card.url ? (
-            <a href={card.url}>Читать в источнике</a>
+            <Button className={classes.btn} theme={ButtonTheme.BASIC}>
+              <a href={card.url}>Читать в источнике</a>
+            </Button>
           ) : (
-            "Читать в источнике"
+            <Button className={classes.btn} theme={ButtonTheme.DEACTIVATED}>
+              Читать в источнике
+            </Button>
           )}
-        </Button>
         <span className={classes.counter}>{card.wordCount} слов</span>
       </div>
     </div>

@@ -1,6 +1,14 @@
 .form {
+  position: relative;
   display: flex;
   flex-direction: column;
+}
+
+.error {
+  position: absolute;
+  display: block;
+  top: -20px;
+  color: rgb(228, 42, 42);
 }
 
 .label {
