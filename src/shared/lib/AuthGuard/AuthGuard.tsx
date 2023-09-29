@@ -9,13 +9,7 @@ interface AuthGuardProps {
 }
 
 export function AuthGuard({ redirectTo, children }: AuthGuardProps) {
-  const {isAuth, isLoading} = useAppSelector(getAuthData);
-  console.log("Loading: " + isLoading)
-  console.log("isAuth: " + isAuth)
-
-  if (isLoading) {
-    return "Loading..."
-  }
+  const {isAuth} = useAppSelector(getAuthData);
 
   if (!isAuth) {
     return <Navigate to={redirectTo} replace />;

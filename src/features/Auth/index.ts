@@ -6,4 +6,3 @@ export { getAuthData } from "./selectors/getAuthData"
 export { getAccesToken } from "./selectors/getAccesToken"
 
 export { login } from "./services/login"
-export { init } from "./services/init"

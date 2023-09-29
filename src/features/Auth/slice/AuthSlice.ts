@@ -1,16 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { AuthSchema } from "../types/AuthSchema";
 import { login } from "../services/login";
-import { init } from "../services/init";
-import { useNavigate } from "react-router";
 
 const initialState: AuthSchema = {
-  accessToken: JSON.parse(localStorage.getItem("token")!) || "",
-  expire: JSON.parse(localStorage.getItem("token")!) || "",
-  isAuth: false,
+  accessToken: JSON.parse(localStorage.getItem("token") || "{}"),
+  expire: JSON.parse(localStorage.getItem("expire") || "{}"),
+  isAuth: +new Date() < +new Date(JSON.parse(localStorage.getItem("expire") || "{}")),
   isLoading: false,
   error: ""
 };
+
 
 export const authSlice = createSlice({
   name: "auth",
@@ -26,20 +25,6 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(init.pending, (state) => {
-        state.isLoading = true;
-        state.error = undefined;
-      })
-      .addCase(init.fulfilled, (state) => {
-        state.isAuth = true;
-        state.isLoading = false;
-        state.error= undefined;
-      })
-      .addCase(init.rejected, (state, action) => {
-        state.isAuth = false;
-        state.isLoading = false;
-        state.error = action.payload;
-      })
       .addCase(login.pending, (state) => {
         state.isAuth = false;
         state.isLoading = true;
