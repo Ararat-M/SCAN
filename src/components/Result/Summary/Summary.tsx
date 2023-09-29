@@ -1,4 +1,4 @@
-import { ResultCarousel } from "./ResultCarousel";
+import { SummaryCarousel } from "./SummaryCarousel";
 import classes from "./summary.module.scss";
 import { useAppSelector } from "shared/hooks/useAppSelector";
 import { useAppDispatch } from "shared/hooks/useAppDispatch";
@@ -22,7 +22,7 @@ export function Summary() {
     <div>
       <h1 className={classes.title}>Общая сводка</h1>
       <span className={classes.counter}>Найдено {data.amount} вариантов</span>
-      <ResultCarousel data={data.data}/>
+      <SummaryCarousel data={data.data}/>
     </div>
   );
 }

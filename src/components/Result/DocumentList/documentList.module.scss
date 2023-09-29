@@ -12,6 +12,10 @@
   row-gap: 20px;
 }
 
+.item {
+  max-width: 645px;
+}
+
 .btn {
   display: block;
   margin-top: 54px;
@@ -33,6 +37,10 @@
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     row-gap: 20px;
+  }
+
+  .item {
+    max-width: 345px;
   }
   
   .btn {

@@ -10,8 +10,8 @@ export function TariffCardList({ items }: TariffCardListProps) {
 
   return (
     <ul className={classes["card-list"]}>
-      {items.map((item) => 
-        <TarrifCard key={nanoid()} card={item}/>
+      {items.map((item) =>
+        <li key={nanoid()}><TarrifCard card={item}/></li>
       )}
     </ul>
   );

@@ -7,6 +7,7 @@ import { getScanDoc, getScanDocData, scanDocActions } from "features/Document";
 import { useAppSelector } from "shared/hooks/useAppSelector";
 import { getPostsIdData } from "features/ObjectSearch";
 import { getAccesToken } from "features/Auth";
+import { Loader } from "shared/ui/Loader/Loader";
 
 
 export function DocumentList() {
@@ -23,13 +24,13 @@ export function DocumentList() {
     if (!postsIdData.isLoading) {
       const dataPart = [];
       
-      for (let i = startIndex; i < endIndex && i < postsIdData.postsId.length; i++) {
+      for (let i = startIndex; i < endIndex && i < postsIdData.postsId.length; i++) { 
         dataPart.push(postsIdData.postsId[i])
       }
       
       dispatch(getScanDoc({ids: dataPart, accessToken}));
     }
-  }, [endIndex, postsIdData]);
+  }, [endIndex, postsIdData.isLoading]);
 
   useEffect(() => {
     return () => {
@@ -46,6 +47,12 @@ export function DocumentList() {
     }
   }
 
+  if (scanDocData.isLoading && scanDocData.scanDocArr.length <= 0) {
+    return <Loader /> // ждем первую порцию документов с api
+  } else if (scanDocData.scanDocArr.length <= 0) {
+    return null // не рендерим компонент если список документов пуст
+  }
+
   return (
     <div>
       <h1 className={classes.title}>Список документов</h1>
@@ -60,15 +67,16 @@ export function DocumentList() {
           )
         })} 
       </ul>
-
-      <Button
-        disabled={!(endIndex < postsIdData.postsId.length) || scanDocData.isLoading}
-        className={classes.btn}
-        theme={ButtonTheme.SECONDARY}
-        onClick={btnHandler}
-      >
-        Показать больше
-      </Button>
+      {true && (
+        <Button
+          disabled={scanDocData.isLoading}
+          className={classes.btn}
+          theme={ButtonTheme.SECONDARY}
+          onClick={btnHandler}
+        >
+          Показать больше
+        </Button>
+      )}
     </div>
   );
 }

@@ -10,10 +10,9 @@
   margin-bottom: 50px;
 }
 
-.carousel {
-  display: flex;
-  align-items: center;
-  transform: translateX(-9px);
+.carousel-container {
+  margin-right: -29px;
+  margin-left: -39px;
 }
 
 @media screen and (max-width: 1439px) {
@@ -26,9 +25,5 @@
     max-width: 280px;
     font-size: 28px;
     line-height: 33px;
-  }
-
-  .carousel {
-    max-width: 295px;
   }
 }
