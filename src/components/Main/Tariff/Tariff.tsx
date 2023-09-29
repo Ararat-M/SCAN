@@ -1,9 +1,9 @@
 import { TariffCardList } from "./TariffCardList";
 import classes from "./tariff.module.scss";
 import { IconLamp, IconLaptop, IconTarger } from "shared/assets/svg";
-import { ITariffCard } from "./TariffCardList/TarrifCard";
+import { type ITariffCard } from "./TariffCardList/TarrifCard";
 
-const cardList: ITariffCard[] =  [
+const cardList: ITariffCard[] = [
   {
     title: "Beginner",
     description: "Для небольшого исследования",
@@ -46,8 +46,8 @@ const cardList: ITariffCard[] =  [
       "Безлимитное количество запросов",
       "Приоритетная поддержка"
     ]
-  },
-]
+  }
+];
 
 export function Tariff() {
   return (

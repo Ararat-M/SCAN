@@ -6,7 +6,7 @@ interface ResponseData {
   eventFiltersInfo: {
     usedCompanyCount: number;
     companyLimit: number;
-  }
+  };
 }
 
 interface RequestData {
@@ -20,8 +20,8 @@ export const initInfo = createAsyncThunk<ResponseData, RequestData, { rejectValu
       const response = await axios<ResponseData>(API_URL + "/account/info", {
         headers: {
           "Content-type": "application/json",
-          "Accept": "application/json",
-          "Authorization": `bearer ${requestData.accessToken}`
+          Accept: "application/json",
+          Authorization: `bearer ${requestData.accessToken}`
         }
       });
 

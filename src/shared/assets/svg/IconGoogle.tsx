@@ -1,6 +1,6 @@
-import { SVGProps } from "react";
+import { type SVGProps } from "react";
 
-export function IconGoogle({...props}: SVGProps<SVGSVGElement>) {
+export function IconGoogle({ ...props }: SVGProps<SVGSVGElement>) {
   return (
     <svg {...props} width="transparent" height="transparent" viewBox="0 0 60 20" fill="none">
       <path d="M25.4454 10.3005C25.4454 13.1165 23.2424 15.1916 20.5389 15.1916C17.8353 15.1916 15.6323 13.1165 15.6323 10.3005C15.6323 7.46465 17.8353 5.40942 20.5389 5.40942C23.2424 5.40942 25.4454 7.46465 25.4454 10.3005ZM23.2975 10.3005C23.2975 8.54078 22.0207 7.33675 20.5389 7.33675C19.057 7.33675 17.7802 8.54078 17.7802 10.3005C17.7802 12.0426 19.057 13.2643 20.5389 13.2643C22.0207 13.2643 23.2975 12.0404 23.2975 10.3005Z" fill="#EA4335"/>

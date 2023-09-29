@@ -1,1 +1,1 @@
-export { TarrifCard, ITariffCard } from "./TarrifCard"
+export { TarrifCard, type ITariffCard } from "./TarrifCard";

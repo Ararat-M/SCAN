@@ -1,4 +1,4 @@
-export interface ScanDoc{
+export interface ScanDoc {
   date: string;
   url: string;
   source: string;
@@ -18,7 +18,7 @@ export interface ScanDoc{
     coverage: {
       value: number;
       state: "hasData";
-    }
+    };
   };
 }
 

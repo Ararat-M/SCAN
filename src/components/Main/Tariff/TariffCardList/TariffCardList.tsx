@@ -7,7 +7,6 @@ interface TariffCardListProps {
 }
 
 export function TariffCardList({ items }: TariffCardListProps) {
-
   return (
     <ul className={classes["card-list"]}>
       {items.map((item) =>

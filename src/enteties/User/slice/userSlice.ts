@@ -1,5 +1,5 @@
 import { type PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { UserSchema } from "../types/UserSchema";
+import { type UserSchema } from "../types/UserSchema";
 
 const initialState: UserSchema = {
   unlimited: false,
@@ -19,7 +19,7 @@ export const userSlice = createSlice({
       state.searchRateBlockPeriod = actions.payload.searchRateBlockPeriod;
     }
   }
-})
+});
 
-export const {actions: userActions} = userSlice;
-export const {reducer: userReducer} = userSlice;
+export const { actions: userActions } = userSlice;
+export const { reducer: userReducer } = userSlice;

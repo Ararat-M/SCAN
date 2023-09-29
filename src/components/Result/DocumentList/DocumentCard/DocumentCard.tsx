@@ -2,7 +2,7 @@ import { Button, ButtonTheme } from "shared/ui/Button";
 import classes from "./documentCard.module.scss";
 import { formatDate } from "shared/lib/formatDate/formatDate";
 import { useEffect, useRef, useState } from "react";
-import noImg from "shared/assets/images/no-image.png"
+import noImg from "shared/assets/images/no-image.png";
 import { load } from "cheerio";
 
 interface scanDoc {
@@ -16,16 +16,16 @@ interface scanDoc {
   wordCount: number;
 }
 
-export function DocumentCard({ card }: {card: scanDoc}) {
+export function DocumentCard({ card }: { card: scanDoc }) {
   const [imgSrc, setImgSrc] = useState("");
-  const descRef = useRef<HTMLDivElement>(null)
-  
+  const descRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const xmlDoc = new DOMParser().parseFromString(card.description, "text/xml");
-    
+
     const scandoc = xmlDoc.querySelector("scandoc");
     const html = scandoc?.textContent;
-    
+
     if (html != null) {
       // Загрузка HTML с помощью Cheerio
       const $ = load(html);
@@ -54,14 +54,14 @@ export function DocumentCard({ card }: {card: scanDoc}) {
 
       // Регулярное выражение для удаления всех тегов img, table и figure
       const combinedRegex = /<img[^>]*>|<table[^>]*>|<figure[^>]*>/gi;
-      const clearHtml = html.replace(combinedRegex, '');
+      const clearHtml = html.replace(combinedRegex, "");
 
       // Вставляем полученную разметку
-      if (descRef.current != null ) {
+      if (descRef.current != null) {
         descRef.current.innerHTML = clearHtml;
       }
     }
-  }, [])
+  }, []);
 
   return (
     <div className={classes.card}>
@@ -75,18 +75,18 @@ export function DocumentCard({ card }: {card: scanDoc}) {
       </div>
       <h1 className={classes.title}>{card.title}</h1>
       {card.type && <div className={classes.mark}>{card.type}</div>}
-      <div style={{ backgroundImage: `url(${imgSrc})`}} className={classes.img}></div>
+      <div style={{ backgroundImage: `url(${imgSrc})` }} className={classes.img}></div>
       <div ref={descRef} className={classes.description}></div>
       <div className={classes.footer}>
-          {card.url ? (
-            <Button className={classes.btn} theme={ButtonTheme.BASIC}>
-              <a href={card.url}>Читать в источнике</a>
-            </Button>
-          ) : (
-            <Button className={classes.btn} theme={ButtonTheme.DEACTIVATED}>
-              Читать в источнике
-            </Button>
-          )}
+        {card.url ? (
+          <Button className={classes.btn} theme={ButtonTheme.BASIC}>
+            <a href={card.url}>Читать в источнике</a>
+          </Button>
+        ) : (
+          <Button className={classes.btn} theme={ButtonTheme.DEACTIVATED}>
+            Читать в источнике
+          </Button>
+        )}
         <span className={classes.counter}>{card.wordCount} слов</span>
       </div>
     </div>

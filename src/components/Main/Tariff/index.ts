@@ -1,1 +1,1 @@
-export { Tariff } from "./Tariff"
+export { Tariff } from "./Tariff";

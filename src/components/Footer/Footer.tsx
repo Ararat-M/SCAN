@@ -1,5 +1,5 @@
-import logo from "shared/assets/images/scan-icon-white.png"
-import classes from "./footer.module.scss"
+import logo from "shared/assets/images/scan-icon-white.png";
+import classes from "./footer.module.scss";
 import { classNames } from "shared/lib/classNames";
 
 export function Footer() {

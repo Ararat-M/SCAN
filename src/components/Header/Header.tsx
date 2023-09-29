@@ -1,4 +1,4 @@
-import classes from "./header.module.scss"
+import classes from "./header.module.scss";
 import logo from "shared/assets/images/scan-icon.jpg";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Navigation } from "./Navigation";
@@ -10,7 +10,7 @@ import { BurgerMenu } from "components/BurgerMenu";
 import { Link } from "react-router-dom";
 
 export function Header() {
-  const { isAuth } = useAppSelector(getAuthData)
+  const { isAuth } = useAppSelector(getAuthData);
 
   return (
     <header className={classes.header}>
@@ -18,7 +18,7 @@ export function Header() {
         <Link to={"/"}>
           <img className={classes.logo} src={logo} alt="logo" />
         </Link>
-        
+
         <div className={classes.nav}>
           <Navigation />
         </div>
@@ -26,13 +26,13 @@ export function Header() {
         {isAuth ? (
           <div className={classNames(classes["panel-user"], [classes.panel])}>
             <UserPanel />
-          </div>  
+          </div>
         ) : (
           <div className={classNames(classes["panel-auth"], [classes.panel])}>
             <AuthPanel />
-          </div>  
+          </div>
         )}
-        
+
         <div className={classes.burger}>
           <BurgerMenu/>
         </div>

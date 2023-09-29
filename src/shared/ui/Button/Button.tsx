@@ -16,16 +16,15 @@ export enum ButtonTheme {
   BASIC = "basic"
 }
 
-export function Button({ children, theme, className, isActive=false, ...props }: ButtonProps) {
-
+export function Button({ children, theme, className, isActive = false, ...props }: ButtonProps) {
   const additionalCls = [
     className || ""
-  ]
+  ];
 
   const mods = {
-    "active": isActive,
+    active: isActive,
     [classes.disabled]: props.disabled ?? false
-  }
+  };
 
   return (
     <button {...props} className={classNames(classes[theme], [...additionalCls], mods)}>

@@ -9,7 +9,7 @@ interface LabelProps {
   isError?: boolean;
 }
 
-export function Label({children, text, required, id, isError}: LabelProps) {
+export function Label({ children, text, required, id, isError }: LabelProps) {
   return (
     <label htmlFor={id} >
       <span className={classes["label-text"]}>

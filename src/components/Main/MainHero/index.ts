@@ -1,1 +1,1 @@
-export { MainHero } from "./MainHero"
+export { MainHero } from "./MainHero";

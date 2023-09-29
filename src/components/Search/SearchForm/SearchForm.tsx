@@ -8,14 +8,13 @@ import { useDateInput } from "shared/hooks/useDateInput";
 import { Checkbox } from "shared/ui/CheckBox/CheckBox";
 import { useState } from "react";
 import { useAppDispatch } from "shared/hooks/useAppDispatch";
-import { Tonality } from "enteties/Filter";
+import { type Tonality } from "enteties/Filter";
 import { filterActions } from "enteties/Filter/slice/filterSlice";
 import { useNavigate } from "react-router";
 import { useMediaQuery } from "react-responsive";
 
-
 export function SearchForm() {
-  const isMobile = useMediaQuery({ query: '(max-width: 1439px)' })
+  const isMobile = useMediaQuery({ query: "(max-width: 1439px)" });
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -36,15 +35,15 @@ export function SearchForm() {
   const [digests, setDigests] = useState(false);
 
   const dateNotCorrect = +startDateInput.date > +endDateInput.date;
-  const formNotCorrect =  innInput.isError || quantityInput.isError || endDateInput.isError || startDateInput.isError;
+  const formNotCorrect = innInput.isError || quantityInput.isError || endDateInput.isError || startDateInput.isError;
 
   function submitHandler(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    
+
     dispatch(filterActions.setFilter({
       issueDateInterval: {
         startDate: startDateInput.value,
-        endDate: endDateInput.value,
+        endDate: endDateInput.value
       },
       searchContext: {
         targetSearchEntitiesContext: {
@@ -54,11 +53,11 @@ export function SearchForm() {
             sparkId: null,
             entityId: null,
             inn: +innInput.value.replaceAll(" ", ""),
-            maxFullness: maxFullness
+            maxFullness
           }],
           onlyMainRole: mainRole,
           onlyWithRiskFactors: onlyRiskFactor,
-          tonality: tonalityInput.value as Tonality,
+          tonality: tonalityInput.value as Tonality
         }
       },
       limit: +quantityInput.value,
@@ -67,9 +66,9 @@ export function SearchForm() {
         excludeDigests: digests,
         excludeTechNews: techNews
       }
-    }))
+    }));
 
-    navigate("/result")
+    navigate("/result");
   }
 
   return (
@@ -91,13 +90,13 @@ export function SearchForm() {
             errorMsg={innInput.errorMsg}
           />
         </Label>
-        
+
         <Label id="tonality" text="Тональность">
           <div className={classes["custom-select"]}>
             <select id="tonality"
               className={classNames(classes.input, [classes["input-select"]])}
               value={tonalityInput.value}
-              onChange={(e) => tonalityInput.setValue(e.currentTarget.value)}
+              onChange={(e) => { tonalityInput.setValue(e.currentTarget.value); }}
             >
               <option disabled>Выберите тональность</option>
               <option value="any">Любая</option>
@@ -120,7 +119,7 @@ export function SearchForm() {
             wasUsed={quantityInput.wasUsed}
             setWasUsed={quantityInput.setWasUsed}
             isError={quantityInput.isError}
-            errorMsg={quantityInput.errorMsg} 
+            errorMsg={quantityInput.errorMsg}
           />
         </Label>
 
@@ -134,7 +133,7 @@ export function SearchForm() {
             <div className={classes["custom-date"]}>
               <Input
                 fluid={isMobile}
-                className={classNames(classes.input, [classes["input-date"]], {[classes["has-value"]]: startDateInput.value})}
+                className={classNames(classes.input, [classes["input-date"]], { [classes["has-value"]]: startDateInput.value })}
                 type="date"
                 placeholder="Дата начала"
                 value={startDateInput.value}
@@ -142,13 +141,13 @@ export function SearchForm() {
                 wasUsed={startDateInput.wasUsed}
                 setWasUsed={startDateInput.setWasUsed}
                 isError={startDateInput.isError || dateNotCorrect}
-                errorMsg={startDateInput.errorMsg} 
+                errorMsg={startDateInput.errorMsg}
               />
             </div>
             <div className={classes["custom-date"]}>
               <Input
                 fluid={isMobile}
-                className={classNames(classes.input, [classes["input-date"]], {[classes["has-value"]]: endDateInput.value})}
+                className={classNames(classes.input, [classes["input-date"]], { [classes["has-value"]]: endDateInput.value })}
                 type="date"
                 placeholder="Дата конца"
                 value={endDateInput.value}
@@ -156,47 +155,47 @@ export function SearchForm() {
                 wasUsed={endDateInput.wasUsed}
                 setWasUsed={endDateInput.setWasUsed}
                 isError={endDateInput.isError || dateNotCorrect}
-                errorMsg={endDateInput.errorMsg} 
+                errorMsg={endDateInput.errorMsg}
               />
             </div>
-          
+
             {dateNotCorrect && <span className={classes["input-date-error"]}>Введите корректные данные</span>}
           </div>
         </Label>
       </div>
 
       <div className={classes["checkbox-field"]}>
-        <Checkbox 
+        <Checkbox
           checked={maxFullness}
           setCheked={setMaxFullness}
           label="Признак максимальной полноты"
         />
-        <Checkbox 
+        <Checkbox
           checked={businessСontexts}
           setCheked={setBusinessСontexts}
           label="Упоминания в бизнес-контексте"
         />
-        <Checkbox 
+        <Checkbox
           checked={mainRole}
           setCheked={setMainRole}
           label="Главная роль в публикации"
         />
-        <Checkbox 
+        <Checkbox
           checked={onlyRiskFactor}
           setCheked={setOnlyRiskFactor}
           label="Публикации только с риск-факторами"
         />
-        <Checkbox 
+        <Checkbox
           checked={techNews}
           setCheked={setTechNews}
           label="Включать технические новости рынков"
         />
-        <Checkbox 
+        <Checkbox
           checked={announcements}
           setCheked={setAnnouncements}
           label="Включать анонсы и календари"
         />
-        <Checkbox 
+        <Checkbox
           checked={digests}
           setCheked={setDigests}
           label="Включать сводки новостей"

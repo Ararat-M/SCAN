@@ -1,6 +1,6 @@
 type Interval = "day" | "week" | "month" | "quarter " | "year";
 
-export type Tonality =  "any" | "negative" | "positive";
+export type Tonality = "any" | "negative" | "positive";
 
 export interface FilterSchema {
   intervalType: Interval;
@@ -17,7 +17,7 @@ export interface FilterSchema {
         sparkId: number | null;
         entityId: number | null;
         inn: number;
-        maxFullness: boolean,
+        maxFullness: boolean;
       }];
       onlyMainRole: boolean;
       onlyWithRiskFactors: boolean;

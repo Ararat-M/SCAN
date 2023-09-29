@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { formatDate } from "shared/lib/formatDate/formatDate";
 
 export interface DateValidation {
@@ -17,29 +17,33 @@ export function useDateValidation(Date: Date, validations: DateValidation) {
 
   useEffect(() => {
     if (requaired) {
-      setErrorMsg("Заполните дату")
-      setIsError(true)
-      return
+      setErrorMsg("Заполните дату");
+      setIsError(true);
+      return;
     }
 
     if (minDate) {
-      setIsError(true)
-      setErrorMsg(`не раньше ${validations.minDate?.toString()}`)
-      return
-    }
-    
-    if (maxDate) {
-      setIsError(true)
-      setErrorMsg(`не позже ${formatDate(validations.maxDate!.toString())}`)
-      return
+      setIsError(true);
+      setErrorMsg(`не раньше ${validations.minDate?.toString()}`);
+      return;
     }
 
-    setIsError(false)
-    setErrorMsg("")
-  }, [Date])
+    if (maxDate) {
+      setIsError(true);
+
+      if (validations.maxDate != null) {
+        setErrorMsg(`не позже ${formatDate(validations.maxDate.toString())}`);
+      }
+
+      return;
+    }
+
+    setIsError(false);
+    setErrorMsg("");
+  }, [Date]);
 
   return [
     isError,
     errorMsg
-  ] as const
+  ] as const;
 }

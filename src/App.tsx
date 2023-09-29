@@ -7,10 +7,10 @@ export function App() {
     <div className="layout">
       <Header />
 
-        <div className="content">
-          <AppRouter />
-        </div>
-      
+      <div className="content">
+        <AppRouter />
+      </div>
+
       <Footer />
     </div>
   );

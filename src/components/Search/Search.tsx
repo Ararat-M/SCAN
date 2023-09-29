@@ -1,12 +1,11 @@
 import { classNames } from "shared/lib/classNames";
 import { SearchForm } from "./SearchForm";
 import classes from "./search.module.scss";
-import { IconDocuments, SearchBg } from "shared/assets/svg";
+import { IconDocuments, SearchBg, IconPaper } from "shared/assets/svg";
 import { useMediaQuery } from "react-responsive";
-import { IconPaper } from "shared/assets/svg";
 
 export function Search() {
-  const isMobile = useMediaQuery({ query: '(max-width: 1439px)' })
+  const isMobile = useMediaQuery({ query: "(max-width: 1439px)" });
 
   return (
     <div className={classNames(classes.search, ["container"])}>
@@ -16,7 +15,7 @@ export function Search() {
           <p className={classes.description}>Задайте параметры поиска.<br/>Чем больше заполните, тем точнее поиск</p>
         </div>
       </div>
-      
+
       <div className={classes["documents-icon"]}>
         {isMobile ? <IconPaper/> : <IconDocuments/>}
       </div>

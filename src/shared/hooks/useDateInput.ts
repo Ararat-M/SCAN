@@ -1,10 +1,10 @@
-import { useState } from "react"
+import { useState } from "react";
 import { type DateValidation, useDateValidation } from "./useDateValidation";
 
 export function useDateInput(
   initilaValue = "",
   validations: DateValidation = {}
-  ) {
+) {
   const [value, setValue] = useState(initilaValue);
   const [wasUsed, setWasUsed] = useState(false);
   const [isError, errorMsg] = useDateValidation(new Date(value), validations);
@@ -17,5 +17,5 @@ export function useDateInput(
     wasUsed,
     setWasUsed,
     date: new Date(value)
-  }]
+  }];
 }

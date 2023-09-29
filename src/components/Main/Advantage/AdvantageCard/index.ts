@@ -1,1 +1,1 @@
-export { AdvantageCard } from "./AdvantageCard"
+export { AdvantageCard } from "./AdvantageCard";

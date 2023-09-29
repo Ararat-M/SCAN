@@ -1,10 +1,10 @@
-import { useState } from "react"
+import { useState } from "react";
 import { type ValueValidation, useValueValidation } from "./useValueValidation";
 
 export function useInput(
   initilaValue = "",
   validations: ValueValidation = {}
-  ) {
+) {
   const [value, setValue] = useState(initilaValue);
   const [wasUsed, setWasUsed] = useState(false);
   const [isError, errorMsg] = useValueValidation(value, validations);
@@ -16,5 +16,5 @@ export function useInput(
     errorMsg,
     wasUsed,
     setWasUsed
-  }]
+  }];
 }

@@ -1,16 +1,16 @@
-import { FilterSchema } from "enteties/Filter";
-import { UserSchema } from "enteties/User/types/UserSchema";
-import { AuthSchema } from "features/Auth";
-import { ScanDocSchema } from "features/Document";
-import { HistogramSchema, PostsIdSchema } from "features/ObjectSearch";
-import { UserInfoSchema } from "features/UserInfo";
+import { type FilterSchema } from "enteties/Filter";
+import { type UserSchema } from "enteties/User/types/UserSchema";
+import { type AuthSchema } from "features/Auth";
+import { type ScanDocSchema } from "features/Document";
+import { type HistogramSchema, type PostsIdSchema } from "features/ObjectSearch";
+import { type UserInfoSchema } from "features/UserInfo";
 
 export interface StateSchema {
-  user: UserSchema,
-  auth: AuthSchema,
-  userInfo: UserInfoSchema,
-  filter: FilterSchema,
-  histogram: HistogramSchema,
-  postsId: PostsIdSchema,
-  scanDoc: ScanDocSchema
+  user: UserSchema;
+  auth: AuthSchema;
+  userInfo: UserInfoSchema;
+  filter: FilterSchema;
+  histogram: HistogramSchema;
+  postsId: PostsIdSchema;
+  scanDoc: ScanDocSchema;
 }

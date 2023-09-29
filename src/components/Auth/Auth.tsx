@@ -1,13 +1,13 @@
 import { Button, ButtonTheme } from "shared/ui/Button";
 import { AuthForm } from "./AuthForm";
 import classes from "./auth.module.scss";
-import { AuthBg } from "shared/assets/svg/AuthBg"
+import { AuthBg } from "shared/assets/svg/AuthBg";
 import { classNames } from "shared/lib/classNames";
 import { useState } from "react";
 import { IconLock } from "shared/assets/svg";
 
 function makeBtnActive(isActive: boolean) {
-  return ({[classes.active]: isActive})
+  return ({ [classes.active]: isActive });
 }
 
 export function Auth() {
@@ -18,32 +18,32 @@ export function Auth() {
       <h1 className={classes.title}>
         Для оформления подписки на тариф, необходимо авторизоваться.
       </h1>
-      
+
       <AuthBg className={classes.bg}/>
-      
+
       <div className={classes["form-container"]}>
         <div className={classes["icon-lock"]}>
           <IconLock />
         </div>
 
         <div className={classes["btn-panel"]}>
-          <Button 
-            className={classNames(classes.btn, [], {...makeBtnActive(!isRegister)})} 
+          <Button
+            className={classNames(classes.btn, [], { ...makeBtnActive(!isRegister) })}
             theme={ButtonTheme.CLEAR}
-            onClick={() => setIsRegister(false)}
+            onClick={() => { setIsRegister(false); }}
           >
             Войти
           </Button>
-          
+
           <Button
-            className={classNames(classes.btn, [],  {...makeBtnActive(isRegister)})}
+            className={classNames(classes.btn, [], { ...makeBtnActive(isRegister) })}
             theme={ButtonTheme.CLEAR}
-            onClick={() => {setIsRegister(true)}}
+            onClick={() => { setIsRegister(true); }}
           >
             Зарегистрироваться
           </Button>
         </div>
-        
+
         <AuthForm/>
       </div>
     </div>

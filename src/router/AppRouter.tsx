@@ -7,7 +7,6 @@ import { Route, Routes } from "react-router-dom";
 import { AuthGuard } from "shared/lib/AuthGuard/AuthGuard";
 
 export function AppRouter() {
-
   return (
     <Suspense fallback={""}>
       <Routes>

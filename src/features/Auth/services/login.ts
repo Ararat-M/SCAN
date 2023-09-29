@@ -17,15 +17,16 @@ export const login = createAsyncThunk<AuthResponse, AuthData, { rejectValue: str
   async (requestData, thunkAPI) => {
     try {
       const response = await axios.post<AuthResponse>(API_URL + "/account/login", {
-        login: requestData.login, 
+        login: requestData.login,
         password: requestData.password
-      }, 
+      },
       {
         headers: {
-        "Content-type": "application/json",
-        "Accept": "application/json"
-      }});
-      
+          "Content-type": "application/json",
+          Accept: "application/json"
+        }
+      });
+
       if (response.data == null) {
         throw new Error();
       }

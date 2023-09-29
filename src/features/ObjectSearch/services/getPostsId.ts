@@ -1,25 +1,25 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_URL } from "shared/const";
-import { FilterSchema } from "enteties/Filter";
+import { type FilterSchema } from "enteties/Filter";
 
 interface ResponseData {
   items: [{
     encodedId: string;
     influence: number;
     similarCount: number;
-  }],
+  }];
   mappings: [{
-    inn: string,
+    inn: string;
     entityIds: number[];
-  }]
+  }];
 }
 
 interface RequestData extends FilterSchema {
   accessToken: string;
 }
 
-export const getPostsId = createAsyncThunk<ResponseData, RequestData, { rejectValue: string} >(
+export const getPostsId = createAsyncThunk<ResponseData, RequestData, { rejectValue: string } >(
   "histogram/posts",
   async (requestData, thunAPI) => {
     try {
@@ -33,12 +33,12 @@ export const getPostsId = createAsyncThunk<ResponseData, RequestData, { rejectVa
         sortType: requestData.sortType,
         sortDirectionType: requestData.sortDirectionType,
         attributeFilters: requestData.attributeFilters
-      }, 
+      },
       {
         headers: {
           "Content-type": "application/json",
-          "Accept": "application/json",
-          "Authorization": `bearer ${requestData.accessToken}`
+          Accept: "application/json",
+          Authorization: `bearer ${requestData.accessToken}`
         }
       });
 
@@ -48,7 +48,7 @@ export const getPostsId = createAsyncThunk<ResponseData, RequestData, { rejectVa
 
       return response.data;
     } catch (error) {
-      return thunAPI.rejectWithValue(error.message)
+      return thunAPI.rejectWithValue(error.message);
     }
   }
-)
+);

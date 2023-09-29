@@ -1,6 +1,6 @@
-import { SVGProps } from "react";
+import { type SVGProps } from "react";
 
-export function IconLaptop({...props}: SVGProps<SVGSVGElement>) {
+export function IconLaptop({ ...props }: SVGProps<SVGSVGElement>) {
   return (
     <svg {...props} width="transparent" height="transparent" viewBox="0 0 96 81" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M89.7033 14.9271C94.2325 18.3403 97.4144 23.9166 95.3648 27.5895C93.8307 30.3046 76.0912 65.6497 67.0449 71.7658C56.4118 78.9655 13.0675 80.045 12.1827 80.0897C9.86533 80.2033 1.07474 67.2812 0.307693 58.9857C-0.366013 51.7535 3.09989 44.6066 3.33528 43.5636C3.57067 42.5205 25.4904 46.4045 25.4904 46.4045L42.3898 67.3542L89.7033 14.9271Z" fill="#3B3B4D"/>

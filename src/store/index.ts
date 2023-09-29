@@ -1,2 +1,2 @@
-export { StoreProvider } from "./StoreProvider"
-export { StateSchema } from "./config/StateSchema"
+export { StoreProvider } from "./StoreProvider";
+export type { StateSchema } from "./config/StateSchema";

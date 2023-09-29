@@ -1,12 +1,12 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { FilterSchema } from "../types/FilterSchema";
+import { type PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { type FilterSchema } from "../types/FilterSchema";
 
 const initialState: FilterSchema = {
   intervalType: "month",
   histogramTypes: ["totalDocuments", "riskFactors"],
   issueDateInterval: {
     startDate: "2019-01-01T00:00:00+03:00",
-    endDate: "2022-08-31T23:59:59+03:00",
+    endDate: "2022-08-31T23:59:59+03:00"
   },
   searchContext: {
     targetSearchEntitiesContext: {
@@ -32,7 +32,7 @@ const initialState: FilterSchema = {
     excludeDigests: false,
     excludeTechNews: false
   }
-}
+};
 
 export const filterSlice = createSlice({
   name: "filter",
@@ -46,7 +46,7 @@ export const filterSlice = createSlice({
     }
   }
 }
-)
+);
 
-export const {actions: filterActions} = filterSlice;
-export const {reducer: filterReducer} = filterSlice;
+export const { actions: filterActions } = filterSlice;
+export const { reducer: filterReducer } = filterSlice;

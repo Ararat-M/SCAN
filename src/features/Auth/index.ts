@@ -1,8 +1,8 @@
-export { AuthSchema } from "./types/AuthSchema"
+export type { AuthSchema } from "./types/AuthSchema";
 
-export { authSlice, authReducer } from "./slice/authSlice"
+export { authSlice, authReducer } from "./slice/authSlice";
 
-export { getAuthData } from "./selectors/getAuthData"
-export { getAccesToken } from "./selectors/getAccesToken"
+export { getAuthData } from "./selectors/getAuthData";
+export { getAccesToken } from "./selectors/getAccesToken";
 
-export { login } from "./services/login"
+export { login } from "./services/login";

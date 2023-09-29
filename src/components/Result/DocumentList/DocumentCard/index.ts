@@ -1,1 +1,1 @@
-export { DocumentCard } from "./DocumentCard"
+export { DocumentCard } from "./DocumentCard";

@@ -9,54 +9,53 @@ import { getPostsIdData } from "features/ObjectSearch";
 import { getAccesToken } from "features/Auth";
 import { Loader } from "shared/ui/Loader/Loader";
 
-
 export function DocumentList() {
   const dispatch = useAppDispatch();
   const postsIdData = useAppSelector(getPostsIdData);
-  const scanDocData = useAppSelector(getScanDocData)
+  const scanDocData = useAppSelector(getScanDocData);
   const accessToken = useAppSelector(getAccesToken);
-  
-  const [cardRenderLimit, setCardRenderLimit] = useState(2)
-  const [startIndex, setStartIndex] = useState(0)
-  const [endIndex, setEndIndex] = useState(10)
-  
+
+  const [cardRenderLimit, setCardRenderLimit] = useState(2);
+  const [startIndex, setStartIndex] = useState(0);
+  const [endIndex, setEndIndex] = useState(10);
+
   useEffect(() => {
     if (!postsIdData.isLoading) {
       const dataPart = [];
-      
-      for (let i = startIndex; i < endIndex && i < postsIdData.postsId.length; i++) { 
-        dataPart.push(postsIdData.postsId[i])
+
+      for (let i = startIndex; i < endIndex && i < postsIdData.postsId.length; i++) {
+        dataPart.push(postsIdData.postsId[i]);
       }
-      
-      dispatch(getScanDoc({ids: dataPart, accessToken}));
+
+      dispatch(getScanDoc({ ids: dataPart, accessToken }));
     }
   }, [endIndex, postsIdData.isLoading]);
 
   useEffect(() => {
     return () => {
       dispatch(scanDocActions.clear());
-    }
+    };
   }, []);
 
   function btnHandler() {
     setStartIndex(startIndex + 10);
     setCardRenderLimit(endIndex);
-    
+
     if (endIndex < postsIdData.postsId.length) {
       setEndIndex(endIndex + 10);
     }
   }
 
   if (scanDocData.isLoading && scanDocData.scanDocArr.length <= 0) {
-    return <Loader /> // ждем первую порцию документов с api
+    return <Loader />; // ждем первую порцию документов с api
   } else if (scanDocData.scanDocArr.length <= 0) {
-    return null // не рендерим компонент если список документов пуст
+    return null; // не рендерим компонент если список документов пуст
   }
 
   return (
     <div>
       <h1 className={classes.title}>Список документов</h1>
-      
+
       <ul className={classes.list}>
         {scanDocData.scanDocArr.map((scanDoc, index) => {
           return (
@@ -64,8 +63,8 @@ export function DocumentList() {
             <li key={scanDoc.id} className={classes.item}>
               <DocumentCard card={scanDoc} />
             </li>
-          )
-        })} 
+          );
+        })};
       </ul>
       {true && (
         <Button
