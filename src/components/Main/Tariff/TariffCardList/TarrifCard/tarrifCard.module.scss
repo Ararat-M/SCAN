@@ -1,0 +1,202 @@
+.card {
+  min-width: 415px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0px 0px 5px 2px rgb(0 0 0 / 20%);
+  border-radius: 10px;
+}
+
+.card-header,
+.price-info,
+.tariff-info {
+  padding-left: 30px;
+  padding-right: 10px;
+}
+
+.card-header {
+  height: 132px;
+  margin-bottom: 33px;
+  border: 2px solid transparent;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 7px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-top: 30px;
+  padding-bottom: 34px;
+}
+
+.title {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 18px;
+}
+
+.card-header-icon {
+  position: absolute;
+  width: 88px;
+  height: 88px;
+  top: 10px;
+  right: 10px;
+}
+
+.active-pin {
+  position: absolute;
+  top: 145px;
+  right: 10px;
+  padding: 3px 13px;
+  border-radius: 10px;
+  border: 1px solid #3BA5E0;
+  background-color: #3BA5E0;
+  font-size: 14px;
+  color: var(--primary-white);
+}
+
+.price-info {
+  flex: 1 0 auto;
+  font-size: 18px;
+  margin-bottom: 59px;
+}
+
+.price {
+  margin-bottom: 10px;
+  font-size: 30px;
+  font-weight: 500;
+
+  .before-price {
+    font-size: 25px;
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+}
+
+.tariff-info {
+  font-size: 20px;
+  margin-bottom: 55px;
+}
+
+.tariff-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.tariff-item {
+  display: flex;
+  width: fit-content;
+  column-gap: 5px;
+}
+
+.card-footer {
+  margin-bottom: 24px;
+  padding: 0 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.card-btn {
+  width: 100%;
+  padding: 18px;
+  font-size: 20px;
+}
+
+.active {
+  border: 2px solid var(--secondary-orange);
+}
+
+@media screen and (max-width: 1439px) {
+  .card {
+    min-width: 100%;
+  }
+
+  .card-header,
+  .price-info,
+  .tariff-info {
+    padding-left: 24px;
+    padding-right: 30px;
+  }
+
+  .card-header {
+    height: 132px;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 30px;
+    margin-bottom: 22px;
+  }
+  
+  .description {
+    font-size: 18px;
+  }
+
+  .card-header-icon {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 13px;
+    right: 10px;
+  }
+  
+  .active-pin {
+    display: none;
+  }
+  
+  .price-info {
+    flex: 1 0 auto;
+    font-size: 18px;
+    margin-bottom: 36px;
+  }
+  
+  .price {
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: 500;
+  
+    .before-price {
+      font-size: 25px;
+      opacity: 0.5;
+      text-decoration: line-through;
+    }
+  }
+  
+  .tariff-info {
+    font-size: 18px;
+    margin-bottom: 39px;
+  }
+  
+  .tariff-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  
+  .tariff-item {
+    display: flex;
+    width: fit-content;
+    column-gap: 5px;
+  }
+  
+  .card-footer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding: 0 24px;
+  }
+  
+  .card-btn {
+    width: 100%;
+    padding: 18px;
+    font-size: 18px;
+  }
+}

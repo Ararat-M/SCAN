@@ -5,9 +5,9 @@ export function Navigation() {
   return (
     <nav>
       <ul className={classes.navigation}>
-        <li><Link to={"/"}>Главная</Link></li>
-        <li><Link to={"/"}>Тарифы</Link></li>
-        <li><Link to={"/"}>FAQ</Link></li>
+        <li><Link className={classes.link} to={"/"}>Главная</Link></li>
+        <li><Link className={classes.link} to={"/"}>Тарифы</Link></li>
+        <li><Link className={classes.link} to={"/"}>FAQ</Link></li>
       </ul>
     </nav>
   );

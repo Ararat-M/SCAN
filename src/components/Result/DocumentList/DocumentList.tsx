@@ -3,11 +3,10 @@ import { DocumentCard } from "./DocumentCard";
 import classes from "./documentList.module.scss";
 import { useAppDispatch } from "shared/hooks/useAppDispatch";
 import { useEffect, useState } from "react";
-import { getScanDoc, getScanDocData } from "features/Documnet";
+import { getScanDoc, getScanDocData, scanDocActions } from "features/Document";
 import { useAppSelector } from "shared/hooks/useAppSelector";
 import { getPostsIdData } from "features/ObjectSearch";
 import { getAccesToken } from "features/Auth";
-import { scanDocActions } from "features/Documnet/slice/scanDocSlice";
 
 
 export function DocumentList() {

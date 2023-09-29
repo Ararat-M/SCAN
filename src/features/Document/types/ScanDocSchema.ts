@@ -8,6 +8,18 @@ export interface ScanDoc{
   description: string;
   wordCount: number;
   id: string;
+  attributes: {
+    isTechNews: boolean;
+    isAnnouncement: boolean;
+    isDigest: boolean;
+    isSpeechRecognition: boolean;
+    influence: number;
+    wordCount: number;
+    coverage: {
+      value: number;
+      state: "hasData";
+    }
+  };
 }
 
 export interface ScanDocSchema {

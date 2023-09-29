@@ -1,8 +1,9 @@
-import { TariffCardList, type TariffCard } from "./TariffCardList";
+import { TariffCardList } from "./TariffCardList";
 import classes from "./tariff.module.scss";
 import { IconLamp, IconLaptop, IconTarger } from "shared/assets/svg";
+import { ITariffCard } from "./TariffCardList/TarrifCard";
 
-const cardList: TariffCard[] =  [
+const cardList: ITariffCard[] =  [
   {
     title: "Beginner",
     description: "Для небольшого исследования",

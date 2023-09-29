@@ -1,1 +1,1 @@
-export { TariffCardList, TariffCard } from "./TariffCardList"
+export { TariffCardList } from "./TariffCardList"

@@ -1,7 +1,7 @@
 import { FilterSchema } from "enteties/Filter";
 import { UserSchema } from "enteties/User/types/UserSchema";
 import { AuthSchema } from "features/Auth";
-import { ScanDocSchema } from "features/Documnet";
+import { ScanDocSchema } from "features/Document";
 import { HistogramSchema, PostsIdSchema } from "features/ObjectSearch";
 import { UserInfoSchema } from "features/UserInfo";
 

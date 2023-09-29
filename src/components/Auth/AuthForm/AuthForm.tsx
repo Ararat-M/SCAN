@@ -33,7 +33,7 @@ export function AuthForm() {
   console.log(error);
   
   return (
-    <form className={classes.form}>
+    <form onSubmit={(e) => e.preventDefault()} className={classes.form}>
       {error && <span className={classes.error}>{error}</span>}
       <label htmlFor="login" className={classes.label}>
         <span className={classes["lable-text"]}>Логин или номер телефона:</span>
