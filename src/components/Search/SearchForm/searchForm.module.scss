@@ -69,7 +69,6 @@
 }
 
 .custom-select .input-select {
-  width: 242px;
   appearance: none;
 }
 
@@ -93,9 +92,44 @@
   height: 43px;
 }
 
-.input-date::-webkit-inner-spin-button,
+.input-date {
+  position: relative;
+}
+
 .input-date::-webkit-calendar-picker-indicator {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  color: transparent;
+  background: transparent;
+}
+
+.input-date::-webkit-inner-spin-button,
+.input-date::-webkit-clear-button {
+  z-index: -10;
+}
+
+.input-date::-webkit-input-placeholder {
+  z-index: 99;
+}
+
+.input-date:placeholder {
+  z-index: 99;
+}
+.input-date:not(.has-value):before {
+  text-align: center;
+  opacity: 0.4;
+  color: #949494;
+  content: attr(placeholder);
+  width: 100%;
+}
+
+.input-date {
+  padding: 12px 20px;
 }
 
 .custom-date {
@@ -112,8 +146,8 @@
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 10px solid #D9D9D9; /* Цвет стрелки */
-  pointer-events: none; /* Позволяет взаимодействовать с селектом, а не с псевдоэлементом */
+  border-top: 10px solid #D9D9D9;
+  pointer-events: none;
 }
 
 .input-date-error {
@@ -204,6 +238,11 @@
     box-shadow: 0 0 20px 0 rgb(0 0 0 / 5%);
     border-radius: 5px;
     font-size: 16px;
+  }
+
+  .custom-select {
+    width: 100%;
+    position: relative;
   }
   
   .input-date {

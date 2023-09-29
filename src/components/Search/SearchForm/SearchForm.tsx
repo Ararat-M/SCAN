@@ -134,10 +134,9 @@ export function SearchForm() {
             <div className={classes["custom-date"]}>
               <Input
                 fluid={isMobile}
-                className={classNames(classes.input, [classes["input-date"]])}
-                type="text"
+                className={classNames(classes.input, [classes["input-date"]], {[classes["has-value"]]: startDateInput.value})}
+                type="date"
                 placeholder="Дата начала"
-                onFocus={(e) => e.currentTarget.type = "date"}
                 value={startDateInput.value}
                 setValue={startDateInput.setValue}
                 wasUsed={startDateInput.wasUsed}
@@ -149,10 +148,9 @@ export function SearchForm() {
             <div className={classes["custom-date"]}>
               <Input
                 fluid={isMobile}
-                className={classNames(classes.input, [classes["input-date"]])}
-                type="text"
+                className={classNames(classes.input, [classes["input-date"]], {[classes["has-value"]]: endDateInput.value})}
+                type="date"
                 placeholder="Дата конца"
-                onFocus={(e) => {e.currentTarget.type = "date"}}
                 value={endDateInput.value}
                 setValue={endDateInput.setValue}
                 wasUsed={endDateInput.wasUsed}
