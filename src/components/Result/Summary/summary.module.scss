@@ -15,10 +15,18 @@
   .title {
     font-size: 28px;
     margin-bottom: 10px;
+    text-align: center;
   }
   
   .counter {
     font-size: 18px;
     margin-bottom: 34px;
+    text-align: center;
   }
+
+  .histogram {
+    width: fit-content;
+    display: block;
+    margin: 0 auto;
+  }  
 }

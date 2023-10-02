@@ -7,7 +7,9 @@ export function Summary({ histogram }: { histogram: HistogramSchema }) {
     <div>
       <h1 className={classes.title}>Общая сводка</h1>
       <span className={classes.counter}>Найдено {histogram.amount} вариантов</span>
-      <SummaryCarousel data={histogram.data}/>
+      <div className={classes.histogram}>
+        <SummaryCarousel data={histogram.data}/>
+      </div>
     </div>
   );
 }

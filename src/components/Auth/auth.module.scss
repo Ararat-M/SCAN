@@ -60,12 +60,14 @@
   border-color: var(--primary-cyan);
 }
 
-@media screen and (max-width: 1439px) {
+@media screen and (max-width: 1099px) {
   .auth {
     margin-top: 31px;
     margin-bottom: 80px;
     grid-template-columns: auto;
     grid-template-rows: auto;
+    justify-items: center;
+    align-items: center;
   }
 
   .title {
@@ -83,7 +85,7 @@
   .form-container {
     display: flex;
     flex-direction: column;
-    justify-self: start;
+    justify-self: center;
     min-width: 325px;
     padding: 25px 15px 20px;
     grid-column-start: 1;
