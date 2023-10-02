@@ -27,7 +27,7 @@ export const authSlice = createSlice({
       .addCase(login.pending, (state) => {
         state.isAuth = false;
         state.isLoading = true;
-        state.error = undefined;
+        state.error = "";
       })
       .addCase(login.fulfilled, (state, action) => {
         state.accessToken = action.payload.accessToken;
