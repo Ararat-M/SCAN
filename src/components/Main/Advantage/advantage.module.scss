@@ -15,7 +15,29 @@
   margin-left: -39px;
 }
 
-@media screen and (max-width: 1439px) {
+@media screen and (max-width: 1149px) {
+  .advantage {
+    padding-bottom: 472px;
+    background-size: 891px 392px;
+  }
+
+  .title {
+    max-width: 280px;
+    font-size: 28px;
+    line-height: 33px;
+  }
+
+  .carousel-stage {
+    margin-left: 20px;
+  }
+  
+  .carousel-container {
+    margin-right: -4px;
+    margin-left: -14px;
+  }
+}
+
+@media screen and (max-width: 719px) {
   .advantage {
     padding-bottom: 472px;
     background-size: 891px 392px;

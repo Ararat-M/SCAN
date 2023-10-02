@@ -69,7 +69,13 @@
   opacity: 0.4;
 }
 
-@media screen and (max-width: 1439px) {
+@media screen and (max-width: 1019px) {
+  .user-panel {
+    column-gap: 24px;
+  }
+}
+
+@media screen and (max-width: 739px) {
   .user-info {
     min-width: 132px;
     min-height: 75px;

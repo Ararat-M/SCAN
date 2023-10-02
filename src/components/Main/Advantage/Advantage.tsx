@@ -45,7 +45,8 @@ const cardList = [
 ];
 
 export function Advantage() {
-  const isMobile = useMediaQuery({ query: "(max-width: 1439px)" });
+  const isDekstop1059 = useMediaQuery({ query: "(max-width: 1059px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 719px)" });
 
   return (
     <div className={classes.advantage}style={{ backgroundImage: `url(${AdvantageBG})` }}>
@@ -63,7 +64,7 @@ export function Advantage() {
             <img src={arrowRight} alt="right" />
           </Button>
         }
-        slidesToShow={isMobile ? 1 : 3}
+        slidesToShow={isMobile ? 1 : isDekstop1059 ? 2 : 3}
         defaultControlsConfig={{
           pagingDotsStyle: { display: "none" },
           nextButtonStyle: { display: "none" },

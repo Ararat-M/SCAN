@@ -178,7 +178,7 @@
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
-    column-gap: 19px;
+    column-gap: 80px;
     width: fit-content;
   }
   
@@ -198,18 +198,6 @@
     display: flex;
     flex-direction: column;
     row-gap: 20px;
-  }
-  
-  .checkbox-field {
-    display: none;
-    width: fit-content;
-    flex-direction: column;
-    text-wrap: nowrap;
-    row-gap: 16px;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
   }
   
   .input-submit-field {
@@ -269,5 +257,11 @@
     position: absolute;
     font-size: 14px;
     color: #949494;
+  }
+}
+
+@media screen and (max-width: 939px) {
+  .checkbox-field {
+    display: none;
   }
 }

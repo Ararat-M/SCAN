@@ -21,6 +21,16 @@
 }
 
 @media screen and (max-width: 1439px) {
+  .logo {
+    margin-right: 0px;
+  }
+  
+  .nav {
+    margin-left: auto;
+  }
+}
+
+@media screen and (max-width: 739px) {
   
   .logo {
     margin-right: 0px;
